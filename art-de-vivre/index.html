@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art de vivre — Rituel Beauté</title>
+<meta name="description" content="Les rituels transversaux, les saisons, les moments qui font de la beauté un art de vivre quotidien.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .niche-header {
+    padding: 5rem 3rem 3rem;
+    text-align: center;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .niche-header-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 3rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .niche-header h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .niche-header h1 em { font-style: italic; color: var(--accent); }
+  .niche-header p {
+    max-width: 40rem;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .articles-list {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+  }
+  .article-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: padding 0.2s;
+  }
+  .article-item:first-child { border-top: 1px solid var(--line); }
+  .article-item:hover { padding-left: 1rem; padding-right: 1rem; background: rgba(255,255,255,0.3); }
+  .article-item-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .article-item h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .article-item h3 em { font-style: italic; color: var(--accent); }
+  .article-item p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 36rem;
+  }
+  .article-item-arrow {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.5rem;
+  }
+  @media (max-width: 700px) {
+    .niche-header { padding: 3rem 1.5rem 2rem; }
+    .articles-list { padding: 3rem 1.5rem; }
+    .article-item { grid-template-columns: 1fr; gap: 0.5rem; padding: 2rem 0; }
+    .article-item-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="masthead">
+      <a href="/" class="brand">
+        <span class="brand-rituel">Rituel</span>
+        <span class="brand-beaute">Beauté</span>
+      </a>
+      <div class="tagline">Le magazine français de la beauté comme art de vivre</div>
+    </div>
+    <nav class="primary-nav">
+      <a href="/mains-et-ongles/">Mains &amp; Ongles</a>
+      <a href="/regard-et-visage/">Regard &amp; Visage</a>
+      <a href="/corps-et-parfum/">Corps &amp; Parfum</a>
+      <a href="/salon-et-pro/">Salon &amp; Pro</a>
+      <a href="/art-de-vivre/">Art de vivre</a>
+    </nav>
+  </div>
+</header>
+
+<section class="niche-header">
+  <div class="niche-header-num">05</div>
+  <h1>Art de <em>vivre</em></h1>
+  <p>Les rituels transversaux. Les saisons, les voyages, les moments qui traversent toutes les rubriques. C'est ici que la beauté devient une philosophie du quotidien plutôt qu'une routine.</p>
+</section>
+
+<div class="articles-list">
+  <a href="/art-de-vivre/rituel-dimanche-soir/" class="article-item">
+    <div>
+      <div class="article-item-date">19 avril 2026 · 7 min</div>
+      <h3>Le rituel du <em>dimanche soir</em> qui prépare toute la semaine</h3>
+      <p>Une heure pour soi avant que la semaine ne commence. Limage, huile, silence. Un petit geste qui change le reste.</p>
+    </div>
+    <div class="article-item-arrow">→</div>
+  </a>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col footer-col-brand">
+      <div class="footer-brand">
+        <span class="brand-rituel">Rituel</span>
+        <span class="brand-beaute">Beauté</span>
+      </div>
+      <p class="footer-tagline">Un magazine francophone qui explore la beauté comme art de vivre. Publié depuis la France.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Univers</h5>
+      <ul>
+        <li><a href="/mains-et-ongles/">Mains &amp; Ongles</a></li>
+        <li><a href="/regard-et-visage/">Regard &amp; Visage</a></li>
+        <li><a href="/corps-et-parfum/">Corps &amp; Parfum</a></li>
+        <li><a href="/salon-et-pro/">Salon &amp; Pro</a></li>
+        <li><a href="/art-de-vivre/">Art de vivre</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Le magazine</h5>
+      <ul>
+        <li><a href="/a-propos/">À propos</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/newsletter/">Newsletter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Légal</h5>
+      <ul>
+        <li><a href="/mentions-legales/">Mentions légales</a></li>
+        <li><a href="/confidentialite/">Confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Rituel Beauté. Tous droits réservés.</div>
+    <div>Édité en France.</div>
+  </div>
+</footer>
+
+</body>
+</html>
