@@ -1,6 +1,6 @@
 /* ============================================================
-   VARIANTE D — BLANC + ROSE VIF
-   Direction : Féminin flashy, jeune, audacieux, fond blanc
+   VARIANTE E — BLANC + MAGENTA FLASHY
+   Direction : Ultra-flashy féminin, magenta électrique
    ============================================================ */
 
 :root {
@@ -8,12 +8,12 @@
   --ink-soft: #4a4a4a;
   --ink-mute: #8a8a8a;
   --paper: #ffffff;
-  --paper-warm: #fdf2f7;
-  --cream: #fce4ec;
-  --accent: #E91E63;
-  --accent-deep: #AD1457;
-  --gold: #E91E63;
-  --line: #f0d9e3;
+  --paper-warm: #fff0fc;
+  --cream: #ffe1f7;
+  --accent: #FF3EDB;
+  --accent-deep: #CC1AA8;
+  --gold: #FF3EDB;
+  --line: #ffd1f1;
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'Manrope', -apple-system, system-ui, sans-serif;
 }
