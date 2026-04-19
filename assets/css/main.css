@@ -1,0 +1,15 @@
+/* ============================================================
+   RITUEL BEAUTÉ · CSS PRINCIPAL
+   Magazine beauté de La Réunion · 974
+   ------------------------------------------------------------
+   Ce fichier importe tous les modules CSS dans l'ordre.
+   Ne pas écrire de CSS directement ici — modifier les modules.
+   ============================================================ */
+
+@import url('_base.css');
+@import url('_header.css');
+@import url('_hero.css');
+@import url('_niches.css');
+@import url('_manifesto.css');
+@import url('_article.css');
+@import url('_product.css');
