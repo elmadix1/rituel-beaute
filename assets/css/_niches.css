@@ -1,1 +1,412 @@
-/* niches — placeholder, sera rempli à l'étape suivante */
+/* ============================================================
+   NICHES (LES UNIVERS) · 5 territoires éditoriaux
+   Style : cartes magazine avec numéros géants, asymétrie
+   ============================================================ */
+
+.niches {
+  padding: 6rem var(--gutter) 6rem;
+  background: var(--paper-warm);
+  position: relative;
+}
+
+/* Filet horizontal fin au-dessus de la section */
+.niches::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 1px;
+  background: var(--coral);
+}
+
+/* ============== EN-TÊTE DE SECTION ============== */
+.section-header {
+  max-width: 50rem;
+  margin: 0 auto 4.5rem;
+  text-align: center;
+  padding: 0 var(--gutter);
+}
+
+.section-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  font-variation-settings: "opsz" 144;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--flamboyant);
+  font-weight: 400;
+}
+
+.section-sub {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 38rem;
+  margin: 0 auto;
+}
+
+/* ============== GRILLE DES NICHES ============== */
+.niche-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* ============== CARTE NICHE ============== */
+.niche-card {
+  background: var(--paper);
+  border: 1px solid var(--line-warm);
+  padding: 2.75rem 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 15rem;
+}
+
+/* Numéro géant en arrière-plan */
+.niche-card::before {
+  content: attr(data-num);
+  position: absolute;
+  bottom: -2rem;
+  right: -1rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14rem;
+  color: var(--coral);
+  opacity: 0.05;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  font-variation-settings: "opsz" 144;
+}
+
+/* Bordure supérieure colorée qui apparaît au hover */
+.niche-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--coral);
+  transition: width 0.4s ease;
+}
+
+.niche-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--coral);
+}
+
+.niche-card:hover::before {
+  opacity: 0.12;
+  transform: translate(-0.5rem, -0.5rem);
+}
+
+.niche-card:hover::after {
+  width: 100%;
+}
+
+/* Numéro visible dans la carte */
+.niche-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2.4rem;
+  color: var(--coral);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+  font-variation-settings: "opsz" 144;
+}
+
+/* Petit filet sous le numéro */
+.niche-num::after {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--line-warm);
+  margin-top: 0.75rem;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.niche-card:hover .niche-num::after {
+  width: 2.5rem;
+  background: var(--coral);
+}
+
+.niche-card h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
+  font-variation-settings: "opsz" 72;
+}
+
+.niche-card p {
+  font-family: var(--sans);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.25rem;
+}
+
+.niche-link {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--flamboyant);
+  font-weight: 600;
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.niche-card:hover .niche-link {
+  color: var(--coral-deep);
+  gap: 0.75rem;
+}
+
+/* ============== VARIATIONS DE COULEURS PAR CARTE ============== */
+
+/* Carte 01 — Mains & Ongles (corail par défaut) */
+.niche-card:nth-child(1)::before,
+.niche-card:nth-child(1) .niche-num {
+  color: var(--coral);
+}
+.niche-card:nth-child(1):hover::after {
+  background: var(--coral);
+}
+.niche-card:nth-child(1):hover {
+  border-color: var(--coral);
+}
+
+/* Carte 02 — Regard & Visage (rose flamboyant) */
+.niche-card:nth-child(2)::before,
+.niche-card:nth-child(2) .niche-num {
+  color: var(--flamboyant);
+}
+.niche-card:nth-child(2) .niche-link {
+  color: var(--flamboyant);
+}
+.niche-card:nth-child(2):hover::after {
+  background: var(--flamboyant);
+}
+.niche-card:nth-child(2):hover {
+  border-color: var(--flamboyant);
+}
+.niche-card:nth-child(2):hover .niche-num::after {
+  background: var(--flamboyant);
+}
+
+/* Carte 03 — Corps & Parfum (vert vétiver) */
+.niche-card:nth-child(3)::before,
+.niche-card:nth-child(3) .niche-num {
+  color: var(--vetiver);
+}
+.niche-card:nth-child(3) .niche-link {
+  color: var(--vetiver);
+}
+.niche-card:nth-child(3):hover::after {
+  background: var(--vetiver);
+}
+.niche-card:nth-child(3):hover {
+  border-color: var(--vetiver);
+}
+.niche-card:nth-child(3):hover .niche-num::after {
+  background: var(--vetiver);
+}
+
+/* Carte 04 — Salon & Pro (coral deep) */
+.niche-card:nth-child(4)::before,
+.niche-card:nth-child(4) .niche-num {
+  color: var(--coral-deep);
+}
+.niche-card:nth-child(4) .niche-link {
+  color: var(--coral-deep);
+}
+.niche-card:nth-child(4):hover::after {
+  background: var(--coral-deep);
+}
+.niche-card:nth-child(4):hover {
+  border-color: var(--coral-deep);
+}
+.niche-card:nth-child(4):hover .niche-num::after {
+  background: var(--coral-deep);
+}
+
+/* Carte 05 — Art de vivre (WIDE + vert foncé + fond sable) */
+.niche-card-wide {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--paper) 0%, var(--paper-cream) 100%);
+  padding: 3rem 3rem 2.5rem;
+  min-height: 12rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.niche-card-wide::before {
+  font-size: 18rem;
+  bottom: -3rem;
+  right: -2rem;
+  color: var(--vetiver);
+}
+
+.niche-card-wide .niche-num {
+  font-size: 4rem;
+  color: var(--vetiver);
+  margin-bottom: 0;
+}
+
+.niche-card-wide .niche-num::after {
+  margin-top: 1rem;
+  width: 2rem;
+  background: var(--vetiver);
+}
+
+.niche-card-wide h3 {
+  font-size: 2rem;
+}
+
+.niche-card-wide p {
+  max-width: 36rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.niche-card-wide .niche-link {
+  color: var(--vetiver);
+  margin-top: 0;
+}
+
+.niche-card-wide:hover::after {
+  background: var(--vetiver);
+}
+
+.niche-card-wide:hover {
+  border-color: var(--vetiver);
+}
+
+/* Sur carte wide, le contenu du haut (num + titre) est à gauche, le texte à droite */
+.niche-card-wide-content {
+  grid-column: 2;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .niches {
+    padding: 4rem var(--gutter) 4rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .niche-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .niche-card {
+    padding: 2.25rem 1.75rem 2rem;
+    min-height: 12rem;
+  }
+
+  .niche-card::before {
+    font-size: 10rem;
+    bottom: -1.5rem;
+    right: -1rem;
+  }
+
+  /* Sur mobile, carte wide redevient normale */
+  .niche-card-wide {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 2.25rem 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .niche-card-wide::before {
+    font-size: 10rem;
+    bottom: -1.5rem;
+    right: -1rem;
+  }
+
+  .niche-card-wide .niche-num {
+    font-size: 2.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .niche-card-wide h3 {
+    font-size: 1.75rem;
+  }
+
+  .niche-card-wide p {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .niches {
+    padding: 3.5rem var(--gutter) 3.5rem;
+  }
+
+  .niche-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .niche-num {
+    font-size: 2rem;
+  }
+}
