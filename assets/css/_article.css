@@ -1,1 +1,282 @@
-/* article — placeholder, sera rempli à l'étape suivante */
+/* ============================================================
+   ARTICLE · Style éditorial pour les pages d'articles
+   Style : magazine haut de gamme — typographie raffinée
+   ============================================================ */
+
+/* ============== HEADER D'ARTICLE ============== */
+.article-header {
+  padding: 5rem var(--gutter) 3rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/* Filet décoratif au-dessus du header */
+.article-header::before {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: var(--coral);
+  margin: 0 auto 2rem;
+}
+
+.article-category {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 1.75rem;
+  font-weight: 600;
+}
+
+.article-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 1.75rem;
+  font-variation-settings: "opsz" 144;
+}
+
+.article-title em {
+  font-style: italic;
+  color: var(--flamboyant);
+  font-weight: 400;
+}
+
+.article-meta {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-meta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.article-meta span + span::before {
+  content: '·';
+  margin-right: 1rem;
+  color: var(--coral);
+}
+
+/* ============== CORPS D'ARTICLE ============== */
+.article-body {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem var(--gutter) 5rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--ink);
+  font-weight: 400;
+  font-variation-settings: "opsz" 14;
+}
+
+.article-body p {
+  margin-bottom: 1.5rem;
+}
+
+/* Lettrine sur le premier paragraphe */
+.article-body > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-size: 4.5em;
+  float: left;
+  line-height: 0.85;
+  margin: 0.1em 0.15em 0 0;
+  color: var(--flamboyant);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+}
+
+/* ============== TITRES DANS L'ARTICLE ============== */
+.article-body h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 3.5rem 0 1.5rem;
+  color: var(--ink);
+  font-variation-settings: "opsz" 72;
+  position: relative;
+  padding-left: 1rem;
+}
+
+/* Petit filet vertical à gauche des h2 */
+.article-body h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  bottom: 0.4em;
+  width: 3px;
+  background: var(--coral);
+}
+
+.article-body h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--flamboyant);
+  font-variation-settings: "opsz" 24;
+}
+
+/* ============== CITATIONS ============== */
+.article-body blockquote {
+  border-left: 2px solid var(--coral);
+  padding: 0.5rem 0 0.5rem 1.75rem;
+  margin: 2.5rem 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  font-weight: 300;
+}
+
+.article-body blockquote em {
+  color: var(--flamboyant);
+  font-weight: 400;
+}
+
+/* ============== LIENS DANS L'ARTICLE ============== */
+.article-body a {
+  color: var(--flamboyant);
+  border-bottom: 1px solid var(--line-warm);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.article-body a:hover {
+  color: var(--flamboyant-deep);
+  border-color: var(--flamboyant);
+}
+
+/* ============== STRONG & EM ============== */
+.article-body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.article-body em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ============== LISTES ============== */
+.article-body ul,
+.article-body ol {
+  margin: 1.5rem 0 1.5rem 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.article-body li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.article-body ul li::marker {
+  color: var(--coral);
+}
+
+.article-body ol li::marker {
+  color: var(--coral);
+  font-weight: 600;
+}
+
+/* ============== IMAGES D'ARTICLE ============== */
+.article-body img,
+.article-body figure {
+  margin: 2.5rem 0;
+  max-width: 100%;
+  display: block;
+}
+
+.article-body figure img {
+  margin: 0;
+  width: 100%;
+}
+
+.article-body figcaption {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  text-align: center;
+  margin-top: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* ============== SÉPARATEUR DÉCORATIF ============== */
+.article-body hr,
+.article-divider {
+  border: none;
+  text-align: center;
+  margin: 3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.article-body hr::before,
+.article-divider::before {
+  content: '· · ·';
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--coral);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .article-header {
+    padding: 3rem var(--gutter) 2rem;
+  }
+
+  .article-body {
+    padding: 1.5rem var(--gutter) 3rem;
+    font-size: 1.08rem;
+  }
+
+  .article-body > p:first-of-type::first-letter {
+    font-size: 4em;
+  }
+
+  .article-body h2 {
+    margin: 2.5rem 0 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-header {
+    padding: 2rem var(--gutter) 1.5rem;
+  }
+
+  .article-body {
+    font-size: 1.02rem;
+  }
+
+  .article-body blockquote {
+    font-size: 1.15rem;
+    padding-left: 1.25rem;
+  }
+}
