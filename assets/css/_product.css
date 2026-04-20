@@ -1,1 +1,315 @@
-/* product — placeholder, sera rempli à l'étape suivante */
+/* ============================================================
+   COMPOSANT PRODUIT BGLAM
+   3 styles d'intégration dans les articles :
+   1. produit-integre     — lien texte italique discret
+   2. produit-inline      — carte horizontale moyenne
+   3. produit-detaille    — carte grande avec image + CTA
+   ============================================================ */
+
+/* ============================================================
+   STYLE 1 · Intégré dans le texte
+   Usage : mention discrète au fil du texte
+   ============================================================ */
+
+.produit-integre {
+  display: inline;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  border-bottom: 1px dotted var(--coral);
+  padding-bottom: 1px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+  text-decoration: none;
+}
+
+.produit-integre:hover {
+  color: var(--flamboyant);
+  border-bottom-style: solid;
+  border-bottom-color: var(--flamboyant);
+}
+
+/* ============================================================
+   STYLE 2 · Carte inline horizontale
+   Usage : recommandation ciblée au fil de l'article
+   ============================================================ */
+
+.produit-inline {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--paper-cream);
+  border: 1px solid var(--line-warm);
+  padding: 1.1rem 1.35rem;
+  margin: 2rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--sans);
+}
+
+/* Accent coloré à gauche qui s'étend au hover */
+.produit-inline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--coral);
+  transform: scaleY(0.5);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.produit-inline:hover {
+  border-color: var(--coral);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.produit-inline:hover::before {
+  transform: scaleY(1);
+}
+
+.produit-inline-img {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: var(--paper-warm);
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--line-warm);
+}
+
+.produit-inline-body {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.produit-inline-label {
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.produit-inline-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.produit-inline-price {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--flamboyant);
+  font-weight: 600;
+}
+
+.produit-inline-arrow {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--coral);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.produit-inline:hover .produit-inline-arrow {
+  transform: translateX(4px);
+  color: var(--flamboyant);
+}
+
+/* ============================================================
+   STYLE 3 · Carte détaillée
+   Usage : produit mis en avant, conclusion d'article
+   ============================================================ */
+
+.produit-detaille {
+  background: var(--paper);
+  border: 1px solid var(--line-warm);
+  padding: 2rem 2rem 1.75rem;
+  margin: 2.5rem 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.75rem;
+  align-items: center;
+  font-family: var(--sans);
+  overflow: hidden;
+}
+
+/* Coins décoratifs de la carte produit */
+.produit-detaille .corner {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--coral);
+  pointer-events: none;
+}
+.produit-detaille .corner.tl {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-right: none;
+  border-bottom: none;
+}
+.produit-detaille .corner.tr {
+  top: 0.75rem;
+  right: 0.75rem;
+  border-left: none;
+  border-bottom: none;
+}
+.produit-detaille .corner.bl {
+  bottom: 0.75rem;
+  left: 0.75rem;
+  border-right: none;
+  border-top: none;
+}
+.produit-detaille .corner.br {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  border-left: none;
+  border-top: none;
+}
+
+.produit-detaille-img {
+  width: 7rem;
+  height: 7rem;
+  background: var(--paper-warm);
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--line-warm);
+}
+
+.produit-detaille-body .label {
+  font-family: var(--sans);
+  font-size: 0.64rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.produit-detaille-body h4 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.65rem;
+  color: var(--ink);
+  line-height: 1.2;
+  font-variation-settings: "opsz" 72;
+}
+
+.produit-detaille-body p {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.produit-detaille-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.produit-detaille-price {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--flamboyant);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.produit-detaille-btn {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.produit-detaille-btn:hover {
+  background: var(--flamboyant);
+  color: var(--paper);
+}
+
+.produit-detaille-btn::after {
+  content: '→';
+  font-family: var(--serif);
+  font-style: italic;
+  transition: transform 0.25s ease;
+}
+
+.produit-detaille-btn:hover::after {
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .produit-inline {
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .produit-inline-img {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .produit-inline-name {
+    font-size: 0.98rem;
+  }
+
+  .produit-detaille {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 2rem 1.5rem 1.75rem;
+  }
+
+  .produit-detaille-img {
+    margin: 0 auto;
+  }
+
+  .produit-detaille-footer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .produit-detaille-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .produit-detaille-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
