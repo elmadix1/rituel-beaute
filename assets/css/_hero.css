@@ -1,1 +1,275 @@
-/* hero — placeholder, sera rempli à l'étape suivante */
+/* ============================================================
+   FEATURE (À LA UNE) · Hero éditorial
+   Style : magazine haut de gamme — asymétrie, typo imposante
+   ============================================================ */
+
+.feature {
+  padding: 4rem var(--gutter) 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ornement typographique en arrière-plan : chiffre géant */
+.feature::before {
+  content: '01';
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18rem, 40vw, 36rem);
+  color: var(--coral);
+  opacity: 0.04;
+  line-height: 0.8;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.05em;
+  font-variation-settings: "opsz" 144;
+}
+
+.feature-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============== TEXTE À LA UNE ============== */
+.feature-text {
+  position: relative;
+}
+
+/* Filet horizontal décoratif avant l'eyebrow */
+.feature-text::before {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 1px;
+  background: var(--coral);
+  margin-bottom: 1.5rem;
+}
+
+.feature-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.feature-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  font-variation-settings: "opsz" 144;
+}
+
+/* Mots mis en italique peuvent être surlignés d'accent */
+.feature-title em {
+  font-style: italic;
+  color: var(--flamboyant);
+  font-weight: 400;
+}
+
+.feature-sub {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 32rem;
+  font-weight: 400;
+}
+
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ink);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.feature-link span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.feature-link:hover {
+  color: var(--flamboyant);
+  border-color: var(--flamboyant);
+  gap: 1rem;
+}
+
+.feature-link:hover span {
+  transform: translateX(6px);
+}
+
+/* ============== VISUEL À LA UNE ============== */
+.feature-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.feature-frame {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(
+    160deg,
+    var(--paper-warm) 0%,
+    var(--paper-cream) 50%,
+    #F3DEC2 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* Composition SVG tropicale en arrière-plan du frame */
+.feature-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='dots' x='0' y='0' width='30' height='30' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='2' cy='2' r='0.8' fill='%23E8826F' opacity='0.15'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='500' fill='url(%23dots)'/%3E%3C!-- Courbes de palme stylisées --%3E%3Cpath d='M 50 400 Q 100 350 80 300 T 60 200 T 90 100' stroke='%23C9486E' stroke-width='1' fill='none' opacity='0.3'/%3E%3Cpath d='M 50 400 Q 110 360 130 310 Q 150 280 145 240' stroke='%23C9486E' stroke-width='0.8' fill='none' opacity='0.25'/%3E%3Cpath d='M 50 400 Q 120 370 160 330 Q 190 310 220 290' stroke='%23C9486E' stroke-width='0.8' fill='none' opacity='0.25'/%3E%3Cpath d='M 50 400 Q 90 340 75 280 Q 65 230 85 180' stroke='%23C9486E' stroke-width='0.8' fill='none' opacity='0.2'/%3E%3C!-- Vagues en bas --%3E%3Cpath d='M 0 450 Q 100 440 200 450 T 400 450 L 400 500 L 0 500 Z' fill='%23E8826F' opacity='0.08'/%3E%3Cpath d='M 0 470 Q 100 460 200 470 T 400 470 L 400 500 L 0 500 Z' fill='%232C4A3A' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: cover;
+  pointer-events: none;
+}
+
+/* Coins décoratifs dorés/coraux */
+.corner {
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--coral);
+  z-index: 2;
+}
+.corner.tl { top: 1rem; left: 1rem; border-right: none; border-bottom: none; }
+.corner.tr { top: 1rem; right: 1rem; border-left: none; border-bottom: none; }
+.corner.bl { bottom: 1rem; left: 1rem; border-right: none; border-top: none; }
+.corner.br { bottom: 1rem; right: 1rem; border-left: none; border-top: none; }
+
+.feature-number {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(4rem, 9vw, 5.5rem);
+  color: var(--flamboyant);
+  line-height: 0.9;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  z-index: 2;
+  font-variation-settings: "opsz" 144;
+}
+
+.feature-caption {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Petit sous-texte sous le caption */
+.feature-caption-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  margin-top: 0.5rem;
+  font-weight: 300;
+  z-index: 2;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .feature {
+    padding: 2.5rem var(--gutter) 3rem;
+  }
+
+  .feature-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Sur mobile, on inverse : visuel D'ABORD, puis texte */
+  .feature-visual {
+    order: -1;
+  }
+
+  .feature-frame {
+    max-width: 18rem;
+    aspect-ratio: 4 / 4.5;
+  }
+
+  .feature-text::before {
+    margin: 0 auto 1.5rem;
+  }
+
+  .feature-text {
+    text-align: center;
+  }
+
+  .feature-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Masquer l'ornement "01" géant sur mobile */
+  .feature::before {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .feature {
+    padding: 2rem var(--gutter) 2.5rem;
+  }
+
+  .feature-frame {
+    max-width: 16rem;
+  }
+
+  .feature-title {
+    font-size: clamp(1.9rem, 7vw, 2.4rem);
+  }
+
+  .feature-sub {
+    font-size: 1rem;
+  }
+}
