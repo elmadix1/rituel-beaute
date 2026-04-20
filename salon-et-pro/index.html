@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon &amp; Pro — Rituel Beauté</title>
+<meta name="description" content="Pour les prothésistes, esthéticiennes, professionnelles installées à La Réunion. Techniques, équipement, business, matériel pro. L'expertise qui se partage entre consœurs.">
+<meta property="og:title" content="Salon &amp; Pro — Rituel Beauté">
+<meta property="og:description" content="Techniques, équipement et business pour les professionnelles de la beauté à La Réunion.">
+<meta property="og:locale" content="fr_RE">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://rituel-beaute.online/salon-et-pro/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<style>
+  .rubrique-header {
+    padding: 5rem var(--gutter) 3rem;
+    max-width: 50rem;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .rubrique-header::before {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--coral);
+    margin: 0 auto 2rem;
+  }
+  .rubrique-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1.75rem;
+    font-weight: 600;
+  }
+  .rubrique-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    font-variation-settings: "opsz" 144;
+  }
+  .rubrique-title em {
+    font-style: italic;
+    color: var(--coral-deep);
+  }
+  .rubrique-intro {
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .articles-list {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 3rem var(--gutter) 6rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .article-card {
+    background: var(--paper);
+    border: 1px solid var(--line-warm);
+    padding: 2.5rem 2.5rem 2.25rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--coral-deep);
+    transition: width 0.4s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--coral-deep);
+  }
+
+  .article-card:hover::before {
+    width: 100%;
+  }
+
+  .article-card-number {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 4.5rem;
+    color: var(--coral-deep);
+    line-height: 0.9;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.02em;
+  }
+
+  .article-card-body h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .article-card-body h2 em {
+    font-style: italic;
+    color: var(--coral-deep);
+  }
+
+  .article-card-body p {
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-card-meta {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+
+  .article-card-meta span + span::before {
+    content: '·';
+    margin: 0 0.5rem;
+    color: var(--coral);
+  }
+
+  .articles-coming {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 3rem var(--gutter) 6rem;
+    text-align: center;
+  }
+
+  .articles-coming h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--ink-mute);
+    margin-bottom: 1rem;
+  }
+
+  .articles-coming p {
+    font-family: var(--sans);
+    color: var(--ink-mute);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 700px) {
+    .article-card {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 1.5rem 1.75rem;
+    }
+    .article-card-number {
+      font-size: 3rem;
+    }
+    .articles-list {
+      gap: 2rem;
+      padding: 2rem var(--gutter) 4rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="masthead">
+      <a href="/" class="brand">
+        <span class="brand-rituel">Rituel</span>
+        <span class="brand-beaute">Beauté</span>
+      </a>
+      <div class="tagline">Le magazine beauté de La Réunion</div>
+    </div>
+    <nav class="primary-nav">
+      <a href="/mains-et-ongles/">Mains &amp; Ongles</a>
+      <a href="/regard-et-visage/">Regard &amp; Visage</a>
+      <a href="/corps-et-parfum/">Corps &amp; Parfum</a>
+      <a href="/salon-et-pro/">Salon &amp; Pro</a>
+      <a href="/art-de-vivre/">Art de vivre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HEADER DE RUBRIQUE ========== -->
+<section class="rubrique-header">
+  <div class="rubrique-eyebrow">Rubrique 04</div>
+  <h1 class="rubrique-title">Salon &amp; <em>Pro</em></h1>
+  <p class="rubrique-intro">Pour les prothésistes, esthéticiennes et professionnelles installées à La Réunion. Techniques, tendances, matériel, business. L'expertise qui se partage entre consœurs qui exercent sur le même territoire.</p>
+</section>
+
+<!-- ========== LISTE DES ARTICLES ========== -->
+<section class="articles-list">
+
+  <a href="/salon-et-pro/equiper-salon-onglerie-reunion/" class="article-card">
+    <div class="article-card-number">01</div>
+    <div class="article-card-body">
+      <h2>Équiper un salon d'<em>onglerie</em> à La Réunion : le budget type</h2>
+      <p>Table manucure, lampe UV, aspirateur à poussières, chaises. Les équipements indispensables pour ouvrir son salon à La Réunion, avec les prix réels et deux scénarios de budget (démarrage minimal et confortable).</p>
+      <div class="article-card-meta">
+        <span>Avril 2026</span>
+        <span>Lecture 7 min</span>
+        <span>Saint-Denis</span>
+      </div>
+    </div>
+  </a>
+
+</section>
+
+<!-- ========== MESSAGE "PLUS D'ARTICLES À VENIR" ========== -->
+<div class="articles-coming">
+  <h3>D'autres sujets arrivent bientôt</h3>
+  <p>Choisir sa lampe UV professionnelle, fidéliser sa clientèle à La Réunion, statuts juridiques comparés pour une prothésiste, gérer les approvisionnements quand on est loin des grossistes européens…</p>
+</div>
+
+</body>
+</html>
