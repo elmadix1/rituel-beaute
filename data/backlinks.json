@@ -1,0 +1,202 @@
+{
+  "_README": [
+    "============================================================",
+    "FICHIER MASTER DES BACKLINKS BGLAM - Rituel Beauté",
+    "============================================================",
+    "",
+    "ROLE : Permet de corriger les URLs cassées en un seul endroit.",
+    "",
+    "COMMENT MODIFIER UNE URL :",
+    "  1. Trouve l'article et le produit (chercher par 'nom' ou 'ref')",
+    "  2. Change la valeur de 'url'",
+    "  3. Mets à jour 'statut' (✅ verified)",
+    "  4. Commit + push : tous les articles utiliseront la nouvelle URL",
+    "",
+    "STATUTS :",
+    "  - ✅ verified  : URL vérifiée et produit en stock",
+    "  - ⚠️ search    : lien de recherche (pas un produit précis)",
+    "  - ❌ broken    : URL cassée, à corriger d'urgence",
+    "  - 🔄 to-check  : à vérifier"
+  ],
+
+  "_meta": {
+    "version": "1.0",
+    "derniere_maj": "2026-04-20",
+    "site": "rituel-beaute.online",
+    "boutique": "bglam-re.com"
+  },
+
+  "articles": {
+
+    "semi-permanent-climat-tropical": {
+      "_article": "/mains-et-ongles/semi-permanent-climat-tropical/",
+      "_publie_le": "2026-04-20",
+      "_rubrique": "Mains & Ongles",
+
+      "primer-search": {
+        "nom": "Primer acide BGlam",
+        "prix": "à partir de 8 €",
+        "url": "https://bglam-re.com/search?q=primer",
+        "statut": "⚠️ search"
+      },
+
+      "nail-lamp-search": {
+        "nom": "Lampe UV/LED",
+        "prix": "à partir de 29,90 €",
+        "url": "https://bglam-re.com/search?q=nail+lamp",
+        "statut": "⚠️ search"
+      },
+
+      "rubber-base-clear": {
+        "nom": "BGLAM Rubber Base No Wipe, Clear, 15 ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-rubber-base-15ml",
+        "statut": "✅ verified"
+      },
+
+      "top-coat-search": {
+        "nom": "Top Coat Diamond",
+        "prix": "à partir de 10 €",
+        "url": "https://bglam-re.com/search?q=top+coat",
+        "statut": "⚠️ search"
+      }
+    },
+
+    "accessoires-cils-maison": {
+      "_article": "/regard-et-visage/accessoires-cils-maison/",
+      "_publie_le": "2026-04-18",
+      "_rubrique": "Regard & Visage",
+
+      "emeda-lash-shampoo": {
+        "nom": "EMEDA Lash Shampoo 60 ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/emeda-eyelash-shampoo",
+        "statut": "🔄 to-check"
+      },
+
+      "tweezers-hrc40": {
+        "nom": "Pince à épiler professionnelle HRC40",
+        "prix": "3,50 €",
+        "url": "https://bglam-re.com/fr/products/tweezers",
+        "statut": "🔄 to-check"
+      },
+
+      "silicon-gel-tape": {
+        "nom": "Silicon Gel Tape pour cils",
+        "prix": "3,90 €",
+        "url": "https://bglam-re.com/fr/products/silicon-gel-tape",
+        "statut": "🔄 to-check"
+      },
+
+      "cils-search": {
+        "nom": "Accessoires cils (recherche)",
+        "prix": "varié",
+        "url": "https://bglam-re.com/search?q=cils",
+        "statut": "⚠️ search"
+      }
+    },
+
+    "parfum-climat-tropical": {
+      "_article": "/corps-et-parfum/parfum-climat-tropical/",
+      "_publie_le": "2026-04-19",
+      "_rubrique": "Corps & Parfum",
+
+      "cologne-lemon": {
+        "nom": "Pierre Cardin Eau de Cologne Lemon 50ml",
+        "prix": "2,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-eau-de-cologne-lemon-50-ml",
+        "statut": "✅ verified"
+      },
+
+      "after-shave-sport": {
+        "nom": "Pierre Cardin After Shave Cologne Sport 150ml",
+        "prix": "7,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-after-shave-cologne-sport-150-ml",
+        "statut": "✅ verified"
+      },
+
+      "body-mist-secret-paradise": {
+        "nom": "Pierre Cardin Body Mist Secret Paradise 200ml",
+        "prix": "8,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-body-mist-secret-paradise-200-ml",
+        "statut": "✅ verified"
+      },
+
+      "alberto-taccini-harmonia": {
+        "nom": "Alberto Taccini Harmonia Women Perfume",
+        "prix": "24,90 €",
+        "url": "https://bglam-re.com/fr/products/alberto-taccini-harmonia-women-perfume",
+        "statut": "✅ verified"
+      },
+
+      "parfum-search": {
+        "nom": "Parfums et eaux de cologne (recherche)",
+        "prix": "varié",
+        "url": "https://bglam-re.com/search?q=perfume",
+        "statut": "⚠️ search"
+      }
+    },
+
+    "equiper-salon-onglerie-reunion": {
+      "_article": "/salon-et-pro/equiper-salon-onglerie-reunion/",
+      "_publie_le": "2026-04-17",
+      "_rubrique": "Salon & Pro",
+
+      "table-bois-pro": {
+        "nom": "Table manucure professionnelle en bois",
+        "prix": "à partir de 159 €",
+        "url": "https://bglam-re.com/fr/products/professional-manicure-table-set",
+        "statut": "🔄 to-check"
+      },
+
+      "table-marbre-or": {
+        "nom": "Table manucure luxe marbre & or",
+        "prix": "199 à 369 €",
+        "url": "https://bglam-re.com/fr/products/modern-luxury-desk-with-marble-top-and-gold-legs-pink",
+        "statut": "🔄 to-check"
+      },
+
+      "sun-x5-plus": {
+        "nom": "SUN X5 Plus UV LED 150W",
+        "prix": "29,90 €",
+        "url": "https://bglam-re.com/fr/products/sun-x5-plus",
+        "statut": "🔄 to-check"
+      },
+
+      "nail-dust-collector-868": {
+        "nom": "Nail Dust Collector 868-1 80W",
+        "prix": "39,90 €",
+        "url": "https://bglam-re.com/fr/products/nail-dust-collector-868-1-80w-purple-hand-rest",
+        "statut": "🔄 to-check"
+      },
+
+      "collections-all": {
+        "nom": "Toutes les collections BGlam",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      }
+    },
+
+    "rituel-dimanche-soir": {
+      "_article": "/art-de-vivre/rituel-dimanche-soir/",
+      "_publie_le": "2026-04-19",
+      "_rubrique": "Art de vivre",
+
+      "lime-bglam-180-240": {
+        "nom": "Lime BGlam professionnelle 180/240",
+        "prix": "à partir de 1,25 €",
+        "url": "https://bglam-re.com/fr/products/bglam-professional-grey-half-moon-nail-file-180-240",
+        "statut": "✅ verified"
+      },
+
+      "bglam-frb16": {
+        "nom": "BGLAM Gel Polish FRB16 French Rubber Base",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb16-french-rubber-base",
+        "statut": "✅ verified"
+      }
+    }
+
+  }
+}
