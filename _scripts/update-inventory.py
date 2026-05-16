@@ -1,22 +1,18 @@
 #!/usr/bin/env python3
 """
 ============================================================
-UPDATE-INVENTORY.PY · Rituel Beauté
+UPDATE-INVENTORY.PY · Rituel Beauté (v2)
 ------------------------------------------------------------
-Scanne tous les articles HTML du site, extrait les produits
-BGlam cités (via les commentaires HTML), et regénère le fichier
-data/produits-cites.json trié par date décroissante.
-
-DÉTECTION :
-- Lit les commentaires <!-- PRODUIT BGLAM : nom | prix | réf: xxx -->
-- Lit la date <meta property="article:published_time" content="...">
-- Lit le <title> et <h1 class="article-title"> pour le nom de l'article
-- Lit le lien <a> juste après le commentaire pour l'URL
+Scanne tous les articles HTML et :
+  1. Régénère data/produits-cites.json (inventaire chronologique)
+  2. Met à jour data/backlinks.json :
+     - Trie les articles par date décroissante
+     - Régénère le sommaire chronologique en haut
 
 USAGE :
     python3 _scripts/update-inventory.py
 
-S'exécute aussi automatiquement via GitHub Actions à chaque push.
+S'exécute automatiquement via GitHub Actions à chaque push.
 ============================================================
 """
 
@@ -25,37 +21,30 @@ import re
 import json
 from datetime import datetime
 from pathlib import Path
+from collections import OrderedDict
 
 
-# Configuration
 REPO_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_FILE = REPO_ROOT / "data" / "produits-cites.json"
+INVENTORY_FILE = REPO_ROOT / "data" / "produits-cites.json"
+BACKLINKS_FILE = REPO_ROOT / "data" / "backlinks.json"
 ARTICLES_PATTERN = "**/index.html"
 
-# Dossiers à ignorer (racine + rubriques sans articles)
 IGNORE_PATHS = [
-    "index.html",                       # Homepage
-    "mentions-legales/index.html",      # Mentions légales
-    "_templates/",                       # Templates
+    "index.html",
+    "mentions-legales/index.html",
+    "_templates/",
     "node_modules/",
 ]
 
-# Pattern de détection des commentaires produits
 PRODUCT_COMMENT_PATTERN = re.compile(
     r'<!--\s*PRODUIT BGLAM\s*:\s*(.+?)\s*\|\s*(.+?)\s*\|\s*réf:\s*(.+?)\s*-->',
     re.IGNORECASE
 )
-
-# Pattern pour trouver le href du lien juste après
 LINK_HREF_PATTERN = re.compile(r'href="(https://bglam-re\.com[^"]+)"', re.IGNORECASE)
-
-# Pattern pour la date de publication
 PUBLISHED_DATE_PATTERN = re.compile(
     r'<meta property="article:published_time" content="([^"]+)"',
     re.IGNORECASE
 )
-
-# Pattern pour le titre de l'article
 ARTICLE_TITLE_PATTERN = re.compile(
     r'<h1 class="article-title">(.+?)</h1>',
     re.DOTALL | re.IGNORECASE
@@ -63,14 +52,11 @@ ARTICLE_TITLE_PATTERN = re.compile(
 
 
 def clean_html(text):
-    """Supprime les balises HTML d'un texte."""
     text = re.sub(r'<[^>]+>', '', text)
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+    return re.sub(r'\s+', ' ', text).strip()
 
 
 def should_ignore(filepath):
-    """Vérifie si le fichier doit être ignoré."""
     relative = str(filepath.relative_to(REPO_ROOT))
     for pattern in IGNORE_PATHS:
         if relative == pattern or relative.startswith(pattern):
@@ -79,13 +65,8 @@ def should_ignore(filepath):
 
 
 def is_article_page(filepath):
-    """
-    Détermine si un fichier HTML est un article ou une page de rubrique.
-    Un article a un commentaire PRODUIT BGLAM ou un meta:published_time.
-    """
     try:
         content = filepath.read_text(encoding='utf-8')
-        # Si on trouve un commentaire produit OU une date de publi, c'est un article
         has_product = bool(PRODUCT_COMMENT_PATTERN.search(content))
         has_date = bool(PUBLISHED_DATE_PATTERN.search(content))
         return has_product or has_date
@@ -94,50 +75,41 @@ def is_article_page(filepath):
 
 
 def extract_article_info(filepath, content):
-    """Extrait les informations générales de l'article."""
-    # URL de l'article : chemin depuis la racine
     relative = filepath.relative_to(REPO_ROOT)
     article_url = "/" + str(relative.parent) + "/"
     if article_url == "/./":
         article_url = "/"
 
-    # Date de publication
     date_match = PUBLISHED_DATE_PATTERN.search(content)
     if date_match:
         date_str = date_match.group(1)
-        # Garder juste la date YYYY-MM-DD
         article_date = date_str.split('T')[0]
     else:
-        # Fallback : date du fichier
         mtime = filepath.stat().st_mtime
         article_date = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
 
-    # Titre de l'article
     title_match = ARTICLE_TITLE_PATTERN.search(content)
     if title_match:
         article_title = clean_html(title_match.group(1))
     else:
         article_title = filepath.parent.name.replace('-', ' ').title()
 
-    return article_url, article_date, article_title
+    article_slug = filepath.parent.name
+
+    return article_url, article_date, article_title, article_slug
 
 
 def extract_products(content):
-    """Extrait tous les produits BGlam cités dans le contenu."""
     products = []
-
     for match in PRODUCT_COMMENT_PATTERN.finditer(content):
         nom = match.group(1).strip()
         prix = match.group(2).strip()
         ref = match.group(3).strip()
 
-        # Chercher le href du lien BGlam juste après ce commentaire
-        # On regarde les 800 caractères qui suivent
         after_comment = content[match.end():match.end() + 2000]
         link_match = LINK_HREF_PATTERN.search(after_comment)
         url = link_match.group(1) if link_match else None
 
-        # Déterminer le statut
         if url and "/search?" in url:
             statut = "⚠️ search"
         elif url:
@@ -152,22 +124,19 @@ def extract_products(content):
             "url": url,
             "statut": statut
         })
-
     return products
 
 
 def scan_articles():
-    """Scanne tous les articles du repo et extrait les produits."""
+    """Scanne tous les articles et retourne (produits flat, articles dict)."""
     all_products = []
-    articles_scanned = 0
+    articles_data = {}
 
-    # Trouver tous les fichiers HTML
     html_files = list(REPO_ROOT.glob(ARTICLES_PATTERN))
 
     for filepath in html_files:
         if should_ignore(filepath):
             continue
-
         if not is_article_page(filepath):
             continue
 
@@ -177,21 +146,9 @@ def scan_articles():
             print(f"⚠️  Erreur lecture {filepath}: {e}")
             continue
 
-        articles_scanned += 1
-
-        # Extraire les infos de l'article
-        article_url, article_date, article_title = extract_article_info(filepath, content)
-
-        # Extraire les produits
+        article_url, article_date, article_title, article_slug = extract_article_info(filepath, content)
         products = extract_products(content)
 
-        if not products:
-            print(f"   📄 {article_title} : aucun produit cité")
-            continue
-
-        print(f"   📄 {article_title} ({article_date}) : {len(products)} produit(s)")
-
-        # Ajouter au tableau global avec les infos article
         for p in products:
             all_products.append({
                 "date": article_date,
@@ -200,24 +157,25 @@ def scan_articles():
                 **p
             })
 
-    return all_products, articles_scanned
+        articles_data[article_slug] = {
+            "date": article_date,
+            "title": article_title,
+            "url": article_url,
+            "products": products
+        }
+
+        print(f"   📄 {article_title} ({article_date}) : {len(products)} produit(s)")
+
+    return all_products, articles_data
 
 
-def main():
-    print("🔍 Scan des articles...")
-    print(f"   Racine du repo : {REPO_ROOT}")
-    print()
-
-    all_products, articles_scanned = scan_articles()
-
-    # Trier par date décroissante (récent en haut)
+def write_inventory(all_products):
+    """Écrit data/produits-cites.json (liste chronologique flat)."""
     all_products.sort(key=lambda p: p['date'], reverse=True)
 
-    # Construire le JSON final
     output = {
         "_README": "Inventaire chronologique des produits BGlam cités dans les articles. Régénéré automatiquement à chaque push via GitHub Actions.",
         "_total": len(all_products),
-        "_articles_scannes": articles_scanned,
         "_derniere_generation": datetime.now().isoformat(timespec='seconds'),
         "_legende_statuts": {
             "✅ verified": "URL produit vérifiée",
@@ -227,22 +185,87 @@ def main():
         "produits": all_products
     }
 
-    # Écrire le fichier
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+    INVENTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(INVENTORY_FILE, 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print()
-    print(f"✅ Inventaire mis à jour : {OUTPUT_FILE}")
-    print(f"   Articles scannés : {articles_scanned}")
-    print(f"   Produits cités   : {len(all_products)}")
-    print()
+    print(f"\n✅ {INVENTORY_FILE.name} : {len(all_products)} produits")
 
-    # Petit résumé console
+
+def update_backlinks_sommaire(articles_data):
+    """Met à jour data/backlinks.json :
+       - Régénère le _sommaire_chronologique
+       - Trie les articles par date décroissante
+       (sans toucher aux URLs et statuts manuels)"""
+
+    if not BACKLINKS_FILE.exists():
+        print(f"⚠️  {BACKLINKS_FILE.name} n'existe pas, on ne fait rien.")
+        return
+
+    with open(BACKLINKS_FILE, 'r', encoding='utf-8') as f:
+        backlinks = json.load(f)
+
+    sorted_slugs = sorted(
+        articles_data.keys(),
+        key=lambda s: articles_data[s]['date'],
+        reverse=True
+    )
+
+    sommaire = ["📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN", ""]
+    for slug in sorted_slugs:
+        a = articles_data[slug]
+        existing = backlinks.get("articles", {}).get(slug, {})
+        rubrique = existing.get("_rubrique", "?")
+        ville = existing.get("_ville", "?")
+        sommaire.append(f"{a['date']} → {slug} ({rubrique} · {ville})")
+    sommaire.append("")
+    sommaire.append(f"Total : {len(sorted_slugs)} articles publiés")
+
+    backlinks["_sommaire_chronologique"] = sommaire
+
+    if "_meta" not in backlinks:
+        backlinks["_meta"] = {}
+    backlinks["_meta"]["derniere_maj"] = datetime.now().strftime('%Y-%m-%d')
+
+    if "articles" in backlinks:
+        old_articles = backlinks["articles"]
+        new_articles = OrderedDict()
+
+        for slug in sorted_slugs:
+            if slug in old_articles:
+                old_articles[slug]["_publie_le"] = articles_data[slug]['date']
+                new_articles[slug] = old_articles[slug]
+
+        for slug, data in old_articles.items():
+            if slug not in new_articles:
+                new_articles[slug] = data
+
+        backlinks["articles"] = new_articles
+
+    with open(BACKLINKS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(backlinks, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✅ {BACKLINKS_FILE.name} : sommaire et tri mis à jour")
+    print(f"   Articles triés par date : {len(sorted_slugs)}")
+
+
+def main():
+    print("🔍 Scan des articles...\n")
+
+    all_products, articles_data = scan_articles()
+
+    write_inventory(all_products)
+    update_backlinks_sommaire(articles_data)
+
+    print("\n📊 Récapitulatif :")
+    print(f"   Articles scannés    : {len(articles_data)}")
+    print(f"   Produits référencés : {len(all_products)}")
+
     if all_products:
-        print("📊 5 derniers produits cités :")
-        for p in all_products[:5]:
-            print(f"   {p['date']} | {p['statut']} | {p['nom']} ({p['prix']})")
+        print("\n📅 Articles du plus récent au plus ancien :")
+        sorted_articles = sorted(articles_data.items(), key=lambda x: x[1]['date'], reverse=True)
+        for slug, a in sorted_articles[:5]:
+            print(f"   {a['date']} → {a['title'][:60]}")
 
 
 if __name__ == "__main__":
