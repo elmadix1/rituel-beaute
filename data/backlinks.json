@@ -44,14 +44,14 @@
       "_titre": "Tenir son semi-permanent sous le climat tropical",
       "primer-search": {
         "nom": "Primer acide BGlam",
-        "prix": "à partir de 8 €",
-        "url": "https://bglam-re.com/search?q=primer",
+        "prix": "à partir de 10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-primer-15ml",
         "statut": "⚠️ search"
       },
       "nail-lamp-search": {
         "nom": "Lampe UV/LED",
         "prix": "à partir de 29,90 €",
-        "url": "https://bglam-re.com/search?q=nail+lamp",
+        "url": "https://bglam-re.com/fr/collections/uv-led-lamp",
         "statut": "⚠️ search"
       },
       "rubber-base-clear": {
@@ -62,8 +62,8 @@
       },
       "top-coat-search": {
         "nom": "Top Coat Diamond",
-        "prix": "à partir de 10 €",
-        "url": "https://bglam-re.com/search?q=top+coat",
+        "prix": "à partir de 12 €",
+        "url": "https://bglam-re.com/products/bglam-top-coat-diamant-15ml",
         "statut": "⚠️ search"
       }
     },
@@ -82,13 +82,13 @@
       "after-shave-sport": {
         "nom": "Pierre Cardin After Shave Cologne Sport 150ml",
         "prix": "7,90 €",
-        "url": "https://bglam-re.com/fr/products/pierre-cardin-after-shave-cologne-sport-150-ml",
+        "url": "https://bglam-re.com/products/pierre-cardin-for-men-after-shave-cologne-aqua",
         "statut": "✅ verified"
       },
       "body-mist-secret-paradise": {
         "nom": "Pierre Cardin Body Mist Secret Paradise 200ml",
         "prix": "8,90 €",
-        "url": "https://bglam-re.com/fr/products/pierre-cardin-body-mist-secret-paradise-200-ml",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-body-mist-secret-paradise",
         "statut": "✅ verified"
       },
       "alberto-taccini-harmonia": {
@@ -132,7 +132,7 @@
       "emeda-lash-shampoo": {
         "nom": "EMEDA Lash Shampoo 60 ml",
         "prix": "10 €",
-        "url": "https://bglam-re.com/fr/products/emeda-eyelash-shampoo",
+        "url": "https://bglam-re.com/fr/products/emeda-lash-shampoo-60ml",
         "statut": "🔄 to-check"
       },
       "tweezers-hrc40": {
@@ -144,7 +144,7 @@
       "silicon-gel-tape": {
         "nom": "Silicon Gel Tape pour cils",
         "prix": "3,90 €",
-        "url": "https://bglam-re.com/fr/products/silicon-gel-tape",
+        "url": "https://bglam-re.com/fr/search?q=silicon+gel+tape&options%5Bprefix%5D=last",
         "statut": "🔄 to-check"
       },
       "cils-search": {
@@ -181,7 +181,7 @@
       "nail-dust-collector-868": {
         "nom": "Nail Dust Collector 868-1 80W",
         "prix": "39,90 €",
-        "url": "https://bglam-re.com/fr/products/nail-dust-collector-868-1-80w-purple-hand-rest",
+        "url": "https://bglam-re.com/fr/products/nail-dust-collector-868-1-80w-purple-hand-rest-size-59-5-39-60-5-cm",
         "statut": "🔄 to-check"
       },
       "collections-all": {
