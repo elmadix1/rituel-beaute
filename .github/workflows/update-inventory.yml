@@ -1,0 +1,41 @@
+name: Update Inventory
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.html'
+      - '_scripts/update-inventory.py'
+  workflow_dispatch:  # Permet de lancer manuellement depuis l'interface GitHub
+
+jobs:
+  update-inventory:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run inventory script
+        run: python3 _scripts/update-inventory.py
+
+      - name: Commit changes if any
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          if [ -n "$(git status --porcelain data/produits-cites.json)" ]; then
+            git add data/produits-cites.json
+            git commit -m "🤖 Auto-update inventaire produits"
+            git push
+            echo "✅ Inventaire mis à jour et committé"
+          else
+            echo "ℹ️  Aucun changement dans l'inventaire"
+          fi
