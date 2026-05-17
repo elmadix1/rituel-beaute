@@ -20,7 +20,7 @@
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-18",
+    "derniere_maj": "2026-05-17",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
@@ -37,35 +37,30 @@
     "Total : 6 articles publiés"
   ],
   "articles": {
-
     "polygel-acrygel-reunion": {
       "_publie_le": "2026-05-18",
       "_article": "/mains-et-ongles/polygel-acrygel-reunion/",
       "_rubrique": "Mains & Ongles",
       "_ville": "Sainte-Marie",
       "_titre": "Polygel ou acrygel : lequel choisir à La Réunion",
-
       "bglam-polygel-30ml": {
         "nom": "BGLAM Polygel/Acrygel 30ml",
         "prix": "20 €",
         "url": "https://bglam-re.com/fr/products/bglam-polygel-acrygel-30ml-01",
         "statut": "✅ verified"
       },
-
       "slip-solution-cleaner": {
         "nom": "Cleaner triple action & Slip Solution 60ml",
         "prix": "5 €",
         "url": "https://bglam-re.com/fr/products/nail-cleaning-liquid",
         "statut": "✅ verified"
       },
-
       "polygel-collection": {
         "nom": "Collection Polygel & Acrygel",
         "prix": "varié",
         "url": "https://bglam-re.com/fr/collections/polygel",
         "statut": "✅ verified"
       },
-
       "builder-gel-collection": {
         "nom": "Collection Builder Gel",
         "prix": "varié",
@@ -73,7 +68,6 @@
         "statut": "✅ verified"
       }
     },
-
     "semi-permanent-climat-tropical": {
       "_publie_le": "2026-04-20",
       "_article": "/mains-et-ongles/semi-permanent-climat-tropical/",
@@ -105,7 +99,6 @@
         "statut": "⚠️ search"
       }
     },
-
     "parfum-climat-tropical": {
       "_publie_le": "2026-04-19",
       "_article": "/corps-et-parfum/parfum-climat-tropical/",
@@ -143,7 +136,6 @@
         "statut": "⚠️ search"
       }
     },
-
     "rituel-dimanche-soir": {
       "_publie_le": "2026-04-19",
       "_article": "/art-de-vivre/rituel-dimanche-soir/",
@@ -163,7 +155,6 @@
         "statut": "✅ verified"
       }
     },
-
     "accessoires-cils-maison": {
       "_publie_le": "2026-04-18",
       "_article": "/regard-et-visage/accessoires-cils-maison/",
@@ -195,7 +186,6 @@
         "statut": "⚠️ search"
       }
     },
-
     "equiper-salon-onglerie-reunion": {
       "_publie_le": "2026-04-17",
       "_article": "/salon-et-pro/equiper-salon-onglerie-reunion/",
@@ -233,6 +223,5 @@
         "statut": "✅ verified"
       }
     }
-
   }
 }
