@@ -335,6 +335,153 @@ def sync_rubrique_pages(articles_data):
         print(f"\n✅ Pages de rubrique déjà à jour")
 
 
+def update_homepage(articles_data):
+    """Met à jour la section des derniers articles sur la homepage.
+    Remplace tout le contenu entre <!-- ARTICLES-AUTO-START --> et <!-- ARTICLES-AUTO-END -->."""
+
+    homepage_path = REPO_ROOT / "index.html"
+    if not homepage_path.exists():
+        print("⚠️  index.html n'existe pas")
+        return
+
+    content = homepage_path.read_text(encoding='utf-8')
+
+    # Vérifier que les balises existent
+    if '<!-- ARTICLES-AUTO-START -->' not in content:
+        print("⚠️  Balises ARTICLES-AUTO manquantes dans index.html")
+        return
+
+    # Trier les articles par date décroissante
+    sorted_articles = sorted(articles_data.items(), key=lambda x: x[1]['date'], reverse=True)
+
+    if not sorted_articles:
+        return
+
+    # Rubrique slug mapping
+    RUBRIQUE_LABELS = {
+        'mains-et-ongles': 'Mains &amp; Ongles',
+        'regard-et-visage': 'Regard &amp; Visage',
+        'corps-et-parfum': 'Corps &amp; Parfum',
+        'salon-et-pro': 'Salon &amp; Pro',
+        'art-de-vivre': 'Art de vivre',
+    }
+
+    # Le premier article = hero card
+    hero_slug, hero_data = sorted_articles[0]
+    hero_url = hero_data['url']
+    hero_rubrique_slug = hero_url.strip('/').split('/')[0]
+    hero_rubrique = RUBRIQUE_LABELS.get(hero_rubrique_slug, hero_rubrique_slug)
+    hero_num = str(len(sorted_articles)).zfill(2)
+
+    # Extraire la ville depuis l'article
+    hero_article_path = REPO_ROOT / hero_url.strip('/') / "index.html"
+    hero_ville = ""
+    hero_date_display = hero_data['date']
+    if hero_article_path.exists():
+        hero_content = hero_article_path.read_text(encoding='utf-8')
+        ville_match = re.search(r'<span>((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+|Salazie|Étang-Salé|Trois-Bassins|Entre-Deux|Petite-Île|Bras-Panon|Les Avirons)\s*·\s*974)</span>', hero_content)
+        if ville_match:
+            hero_ville = ville_match.group(1).split('·')[0].strip()
+        # Date lisible
+        date_match = re.search(r'<span>Publié le ([^<]+)</span>', hero_content)
+        if date_match:
+            hero_date_display = date_match.group(1)
+
+    # Extraire le titre avec em
+    hero_title_html = hero_data['title']
+    if hero_article_path.exists():
+        title_match = re.search(r'<h1 class="article-title">(.+?)</h1>', hero_content, re.DOTALL)
+        if title_match:
+            hero_title_html = title_match.group(1).strip()
+
+    # Construire le HTML du hero
+    hero_html = f'''<section class="latest-section">
+  <div class="latest-eyebrow">Derniers articles</div>
+
+  <a href="{hero_url}" class="hero-card">
+    <div class="hero-card-visual">
+      <div class="hero-card-number">{hero_num}</div>
+    </div>
+    <div class="hero-card-body">
+      <div class="hero-card-rubrique">{hero_rubrique}</div>
+      <div class="hero-card-title">{hero_title_html}</div>
+      <div class="hero-card-meta">
+        <span>{hero_date_display}</span>
+        <span>Lecture 7 min</span>'''
+
+    if hero_ville:
+        hero_html += f'''
+        <span>{hero_ville}</span>'''
+
+    hero_html += '''
+      </div>
+      <div class="hero-card-cta">Lire l\'article <span>→</span></div>
+    </div>
+  </a>
+
+  <div class="recent-grid">
+'''
+
+    # Les articles suivants (max 5)
+    for slug, data in sorted_articles[1:6]:
+        url = data['url']
+        rubrique_slug = url.strip('/').split('/')[0]
+        rubrique_label = RUBRIQUE_LABELS.get(rubrique_slug, rubrique_slug)
+
+        # Titre avec em
+        card_title = data['title']
+        article_path = REPO_ROOT / url.strip('/') / "index.html"
+        card_ville = ""
+        if article_path.exists():
+            a_content = article_path.read_text(encoding='utf-8')
+            t_match = re.search(r'<h1 class="article-title">(.+?)</h1>', a_content, re.DOTALL)
+            if t_match:
+                card_title = t_match.group(1).strip()
+            v_match = re.search(r'<span>((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+|Salazie|Étang-Salé|Trois-Bassins|Entre-Deux|Petite-Île|Bras-Panon|Les Avirons)\s*·\s*974)</span>', a_content)
+            if v_match:
+                card_ville = v_match.group(1).split('·')[0].strip()
+
+        # Date en mois/année
+        date_parts = data['date'].split('-')
+        mois_map = {'01':'Janvier','02':'Février','03':'Mars','04':'Avril','05':'Mai','06':'Juin','07':'Juillet','08':'Août','09':'Septembre','10':'Octobre','11':'Novembre','12':'Décembre'}
+        date_display = f"{mois_map.get(date_parts[1], date_parts[1])} {date_parts[0]}"
+
+        hero_html += f'''
+    <a href="{url}" class="recent-card" data-rubrique="{rubrique_slug}">
+      <div class="recent-card-rubrique">{rubrique_label}</div>
+      <div class="recent-card-title">{card_title}</div>
+      <div class="recent-card-meta">
+        <span>{date_display}</span>'''
+
+        if card_ville:
+            hero_html += f'''
+        <span>{card_ville}</span>'''
+
+        hero_html += '''
+      </div>
+    </a>
+'''
+
+    hero_html += '''
+  </div>
+</section>'''
+
+    # Remplacer entre les balises
+    new_content = re.sub(
+        r'<!-- ARTICLES-AUTO-START -->.*?<!-- ARTICLES-AUTO-END -->',
+        f'<!-- ARTICLES-AUTO-START -->\n{hero_html}\n<!-- ARTICLES-AUTO-END -->',
+        content,
+        flags=re.DOTALL
+    )
+
+    if new_content != content:
+        with open(homepage_path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        print(f"\n✅ Homepage mise à jour ({len(sorted_articles)} articles)")
+    else:
+        print(f"\n✅ Homepage déjà à jour")
+
+
 def main():
     print("🔍 Scan des articles...\n")
 
@@ -343,6 +490,7 @@ def main():
     write_inventory(all_products)
     update_backlinks_sommaire(articles_data)
     sync_rubrique_pages(articles_data)
+    update_homepage(articles_data)
 
     print("\n📊 Récapitulatif :")
     print(f"   Articles scannés    : {len(articles_data)}")
