@@ -482,6 +482,68 @@ def update_homepage(articles_data):
         print(f"\n✅ Homepage déjà à jour")
 
 
+def generate_sitemap(articles_data):
+    """Régénère sitemap.xml avec tous les articles et pages."""
+
+    sitemap_path = REPO_ROOT / "sitemap.xml"
+    today = datetime.now().strftime('%Y-%m-%d')
+
+    sorted_articles = sorted(articles_data.items(), key=lambda x: x[1]['date'], reverse=True)
+
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n\n'
+
+    # Homepage
+    xml += '  <url>\n'
+    xml += '    <loc>https://rituel-beaute.online/</loc>\n'
+    xml += f'    <lastmod>{today}</lastmod>\n'
+    xml += '    <changefreq>daily</changefreq>\n'
+    xml += '    <priority>1.0</priority>\n'
+    xml += '  </url>\n\n'
+
+    # Articles
+    rubriques_seen = set()
+    for slug, data in sorted_articles:
+        url = data['url']
+        xml += '  <url>\n'
+        xml += f'    <loc>https://rituel-beaute.online{url}</loc>\n'
+        xml += f'    <lastmod>{data["date"]}</lastmod>\n'
+        xml += '    <changefreq>monthly</changefreq>\n'
+        xml += '    <priority>0.9</priority>\n'
+        xml += '  </url>\n\n'
+
+        # Collecter les rubriques
+        rubrique = url.strip('/').split('/')[0]
+        rubriques_seen.add(rubrique)
+
+    # Pages de rubrique
+    for rubrique in sorted(rubriques_seen):
+        rubrique_path = REPO_ROOT / rubrique / "index.html"
+        if rubrique_path.exists():
+            xml += '  <url>\n'
+            xml += f'    <loc>https://rituel-beaute.online/{rubrique}/</loc>\n'
+            xml += f'    <lastmod>{today}</lastmod>\n'
+            xml += '    <changefreq>weekly</changefreq>\n'
+            xml += '    <priority>0.8</priority>\n'
+            xml += '  </url>\n\n'
+
+    # Mentions légales
+    xml += '  <url>\n'
+    xml += '    <loc>https://rituel-beaute.online/mentions-legales/</loc>\n'
+    xml += '    <lastmod>2026-04-19</lastmod>\n'
+    xml += '    <changefreq>yearly</changefreq>\n'
+    xml += '    <priority>0.3</priority>\n'
+    xml += '  </url>\n\n'
+
+    xml += '</urlset>\n'
+
+    with open(sitemap_path, 'w', encoding='utf-8') as f:
+        f.write(xml)
+
+    total_urls = len(sorted_articles) + len(rubriques_seen) + 2  # +homepage +mentions
+    print(f"\n✅ sitemap.xml : {total_urls} URLs")
+
+
 def main():
     print("🔍 Scan des articles...\n")
 
@@ -491,6 +553,7 @@ def main():
     update_backlinks_sommaire(articles_data)
     sync_rubrique_pages(articles_data)
     update_homepage(articles_data)
+    generate_sitemap(articles_data)
 
     print("\n📊 Récapitulatif :")
     print(f"   Articles scannés    : {len(articles_data)}")

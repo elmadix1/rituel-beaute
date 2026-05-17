@@ -32,8 +32,8 @@ jobs:
           git config --local user.name "GitHub Action"
 
           if [ -n "$(git status --porcelain)" ]; then
-            git add data/ **/index.html
-            git commit -m "🤖 Auto-update inventaire + sync rubriques"
+            git add data/ **/index.html index.html sitemap.xml
+            git commit -m "🤖 Auto-update inventaire + sync rubriques + sitemap"
             git push
             echo "✅ Inventaire et rubriques mis à jour"
           else
