@@ -249,6 +249,92 @@ def update_backlinks_sommaire(articles_data):
     print(f"   Articles triés par date : {len(sorted_slugs)}")
 
 
+def sync_rubrique_pages(articles_data):
+    """Synchronise les pages de rubrique avec les infos des articles.
+    Pour chaque article, trouve la page rubrique parente et met à jour
+    la ville et la date dans la carte article."""
+
+    # Pattern pour trouver la ville dans un article : "Saint-Paul · 974" ou "Le Tampon · 974"
+    VILLE_PATTERN = re.compile(
+        r'<span>((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+)\s*·\s*974)</span>',
+        re.IGNORECASE
+    )
+
+    # Pattern pour trouver la ville dans la carte de la page rubrique
+    # C'est le dernier <span> dans article-card-meta
+    CARD_META_PATTERN = re.compile(
+        r'(<div class="article-card-meta">.*?<span>)((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+)(?:\s*·\s*974)?)(</span>\s*</div>)',
+        re.DOTALL | re.IGNORECASE
+    )
+
+    synced = 0
+
+    for slug, data in articles_data.items():
+        article_url = data['url']  # ex: /mains-et-ongles/semi-permanent-climat-tropical/
+
+        # Trouver la rubrique parente
+        parts = article_url.strip('/').split('/')
+        if len(parts) < 2:
+            continue
+        rubrique = parts[0]  # ex: mains-et-ongles
+
+        # Lire l'article pour trouver la ville
+        article_path = REPO_ROOT / article_url.strip('/') / "index.html"
+        if not article_path.exists():
+            continue
+
+        article_content = article_path.read_text(encoding='utf-8')
+        ville_match = VILLE_PATTERN.search(article_content)
+        if not ville_match:
+            continue
+
+        article_ville = ville_match.group(1)  # ex: "Saint-Paul · 974"
+        # Extraire juste le nom de ville sans "· 974"
+        ville_name = article_ville.split('·')[0].strip()
+
+        # Lire la page rubrique
+        rubrique_path = REPO_ROOT / rubrique / "index.html"
+        if not rubrique_path.exists():
+            continue
+
+        rubrique_content = rubrique_path.read_text(encoding='utf-8')
+
+        # Chercher et remplacer la ville dans la carte article
+        # On cherche le dernier <span> dans chaque article-card-meta
+        # qui contient un nom de ville
+        modified = False
+
+        # Approche simple : remplacer toutes les occurrences de villes
+        # connues dans les card-meta par la bonne ville
+        villes_connues = [
+            'Saint-Denis', 'Saint-Paul', 'Saint-Pierre', 'Saint-André',
+            'Le Tampon', 'La Possession', 'Le Port', 'Sainte-Marie',
+            'Sainte-Suzanne', 'Saint-Louis', 'Saint-Benoît', 'Saint-Gilles',
+            'Cilaos', 'Saint-Leu', 'Saint-Joseph'
+        ]
+
+        for v in villes_connues:
+            if v == ville_name:
+                continue
+            # Remplacer dans les spans du card-meta
+            old_span = f'<span>{v}</span>'
+            new_span = f'<span>{ville_name}</span>'
+            if old_span in rubrique_content:
+                rubrique_content = rubrique_content.replace(old_span, new_span)
+                modified = True
+
+        if modified:
+            with open(rubrique_path, 'w', encoding='utf-8') as f:
+                f.write(rubrique_content)
+            synced += 1
+            print(f"   🔄 {rubrique}/index.html → ville synchronisée : {ville_name}")
+
+    if synced > 0:
+        print(f"\n✅ {synced} page(s) de rubrique synchronisée(s)")
+    else:
+        print(f"\n✅ Pages de rubrique déjà à jour")
+
+
 def main():
     print("🔍 Scan des articles...\n")
 
@@ -256,6 +342,7 @@ def main():
 
     write_inventory(all_products)
     update_backlinks_sommaire(articles_data)
+    sync_rubrique_pages(articles_data)
 
     print("\n📊 Récapitulatif :")
     print(f"   Articles scannés    : {len(articles_data)}")

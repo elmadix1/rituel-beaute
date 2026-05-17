@@ -31,11 +31,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          if [ -n "$(git status --porcelain data/produits-cites.json)" ]; then
-            git add data/produits-cites.json
-            git commit -m "🤖 Auto-update inventaire produits"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add data/ **/index.html
+            git commit -m "🤖 Auto-update inventaire + sync rubriques"
             git push
-            echo "✅ Inventaire mis à jour et committé"
+            echo "✅ Inventaire et rubriques mis à jour"
           else
-            echo "ℹ️  Aucun changement dans l'inventaire"
+            echo "ℹ️  Aucun changement"
           fi
