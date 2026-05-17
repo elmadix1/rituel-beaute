@@ -1,7 +1,7 @@
 {
   "_README": "Inventaire chronologique des produits BGlam cités dans les articles. Régénéré automatiquement à chaque push via GitHub Actions.",
   "_total": 18,
-  "_derniere_generation": "2026-05-17T16:50:53",
+  "_derniere_generation": "2026-05-17T16:58:31",
   "_legende_statuts": {
     "✅ verified": "URL produit vérifiée",
     "⚠️ search": "Lien de recherche catalogue",
