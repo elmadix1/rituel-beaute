@@ -38,7 +38,6 @@
     "Total : 7 articles publiés"
   ],
   "articles": {
-
     "french-manucure-reunion": {
       "_publie_le": "2026-05-21",
       "_article": "/mains-et-ongles/french-manucure-reunion/",
@@ -64,7 +63,6 @@
         "statut": "✅ verified"
       }
     },
-
     "polygel-acrygel-reunion": {
       "_publie_le": "2026-05-17",
       "_article": "/mains-et-ongles/polygel-acrygel-reunion/",
@@ -96,7 +94,6 @@
         "statut": "✅ verified"
       }
     },
-
     "semi-permanent-climat-tropical": {
       "_publie_le": "2026-04-20",
       "_article": "/mains-et-ongles/semi-permanent-climat-tropical/",
@@ -128,7 +125,6 @@
         "statut": "⚠️ search"
       }
     },
-
     "parfum-climat-tropical": {
       "_publie_le": "2026-04-19",
       "_article": "/corps-et-parfum/parfum-climat-tropical/",
@@ -166,7 +162,6 @@
         "statut": "⚠️ search"
       }
     },
-
     "rituel-dimanche-soir": {
       "_publie_le": "2026-04-19",
       "_article": "/art-de-vivre/rituel-dimanche-soir/",
@@ -186,7 +181,6 @@
         "statut": "✅ verified"
       }
     },
-
     "accessoires-cils-maison": {
       "_publie_le": "2026-04-18",
       "_article": "/regard-et-visage/accessoires-cils-maison/",
@@ -218,7 +212,6 @@
         "statut": "⚠️ search"
       }
     },
-
     "equiper-salon-onglerie-reunion": {
       "_publie_le": "2026-04-17",
       "_article": "/salon-et-pro/equiper-salon-onglerie-reunion/",
@@ -256,6 +249,5 @@
         "statut": "✅ verified"
       }
     }
-
   }
 }

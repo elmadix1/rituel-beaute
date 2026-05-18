@@ -1,13 +1,43 @@
 {
   "_README": "Inventaire chronologique des produits BGlam cités dans les articles. Régénéré automatiquement à chaque push via GitHub Actions.",
-  "_total": 18,
-  "_derniere_generation": "2026-05-17T17:51:10",
+  "_total": 21,
+  "_derniere_generation": "2026-05-18T10:17:11",
   "_legende_statuts": {
     "✅ verified": "URL produit vérifiée",
     "⚠️ search": "Lien de recherche catalogue",
     "❌ no-url-found": "URL non trouvée dans le HTML"
   },
   "produits": [
+    {
+      "date": "2026-05-21",
+      "article": "French manucure créole : la version réunionnaise",
+      "article_url": "/mains-et-ongles/french-manucure-reunion/",
+      "ref": "bglam-frb16",
+      "nom": "BGLAM Gel Polish FRB16 French Rubber Base",
+      "prix": "10 €",
+      "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb16-french-rubber-base",
+      "statut": "✅ verified"
+    },
+    {
+      "date": "2026-05-21",
+      "article": "French manucure créole : la version réunionnaise",
+      "article_url": "/mains-et-ongles/french-manucure-reunion/",
+      "ref": "bglam-frb22",
+      "nom": "BGLAM Gel Polish FRB22 French Rubber Base",
+      "prix": "10 €",
+      "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb22-french-rubber-base",
+      "statut": "✅ verified"
+    },
+    {
+      "date": "2026-05-21",
+      "article": "French manucure créole : la version réunionnaise",
+      "article_url": "/mains-et-ongles/french-manucure-reunion/",
+      "ref": "rubber-base-clear",
+      "nom": "BGLAM Rubber Base No Wipe Clear 15ml",
+      "prix": "10 €",
+      "url": "https://bglam-re.com/fr/products/bglam-rubber-base-15ml",
+      "statut": "✅ verified"
+    },
     {
       "date": "2026-05-17",
       "article": "Polygel ou acrygel : lequel choisir à La Réunion",
