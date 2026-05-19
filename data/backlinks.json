@@ -6,27 +6,22 @@
     "",
     "ROLE : Permet de corriger les URLs cassées en un seul endroit.",
     "",
-    "COMMENT MODIFIER UNE URL :",
-    "  1. Trouve l'article et le produit (chercher par 'nom' ou 'ref')",
-    "  2. Change la valeur de 'url'",
-    "  3. Mets à jour 'statut' (✅ verified)",
-    "  4. Commit + push : tous les articles utiliseront la nouvelle URL",
-    "",
     "STATUTS :",
     "  - ✅ verified  : URL vérifiée et produit en stock",
-    "  - ⚠️ search    : lien de recherche (pas un produit précis)",
-    "  - ❌ broken    : URL cassée, à corriger d'urgence",
+    "  - ⚠️ search    : lien de recherche",
+    "  - ❌ broken    : URL cassée",
     "  - 🔄 to-check  : à vérifier"
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-18",
+    "derniere_maj": "2026-05-19",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-05-19 → maquillage-waterproof-plage (Regard & Visage · Saint-Leu)",
     "2026-05-18 → french-manucure-reunion (Mains & Ongles · Le Port)",
     "2026-05-17 → polygel-acrygel-reunion (Mains & Ongles · Sainte-Marie)",
     "2026-04-20 → semi-permanent-climat-tropical (Mains & Ongles · Saint-Paul)",
@@ -35,9 +30,28 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 7 articles publiés"
+    "Total : 8 articles publiés"
   ],
   "articles": {
+    "maquillage-waterproof-plage": {
+      "_publie_le": "2026-05-19",
+      "_article": "/regard-et-visage/maquillage-waterproof-plage/",
+      "_rubrique": "Regard & Visage",
+      "_ville": "Saint-Leu",
+      "_titre": "Maquillage waterproof : ce qui tient vraiment à la plage",
+      "lash-brow-serum": {
+        "nom": "BF Concentrated Lash & Brow Serum 5ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/products/bf-concentrated-lash-brown-serum-with-mascara-brush-5-ml",
+        "statut": "✅ verified"
+      },
+      "makeup-brush-collection": {
+        "nom": "Pinceaux et accessoires maquillage",
+        "prix": "varié",
+        "url": "https://bglam-re.com/collections/makeup-brush",
+        "statut": "✅ verified"
+      }
+    },
     "french-manucure-reunion": {
       "_publie_le": "2026-05-18",
       "_article": "/mains-et-ongles/french-manucure-reunion/",
