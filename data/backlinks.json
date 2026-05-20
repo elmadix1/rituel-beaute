@@ -14,13 +14,14 @@
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-19",
+    "derniere_maj": "2026-05-20",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-05-20 → huiles-seches-chaleur (Corps & Parfum · La Possession)",
     "2026-05-19 → maquillage-waterproof-plage (Regard & Visage · Saint-Leu)",
     "2026-05-18 → french-manucure-reunion (Mains & Ongles · Le Port)",
     "2026-05-17 → polygel-acrygel-reunion (Mains & Ongles · Sainte-Marie)",
@@ -30,9 +31,28 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 8 articles publiés"
+    "Total : 9 articles publiés"
   ],
   "articles": {
+    "huiles-seches-chaleur": {
+      "_publie_le": "2026-05-20",
+      "_article": "/corps-et-parfum/huiles-seches-chaleur/",
+      "_rubrique": "Corps & Parfum",
+      "_ville": "La Possession",
+      "_titre": "Les huiles sèches qui ne collent pas sous la chaleur",
+      "body-mist-secret-paradise": {
+        "nom": "Pierre Cardin Body Mist Secret Paradise 200ml",
+        "prix": "8,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-body-mist-secret-paradise",
+        "statut": "✅ verified"
+      },
+      "parfum-search": {
+        "nom": "Eaux de cologne et brumes parfumées",
+        "prix": "varié",
+        "url": "https://bglam-re.com/search?q=perfume",
+        "statut": "⚠️ search"
+      }
+    },
     "maquillage-waterproof-plage": {
       "_publie_le": "2026-05-19",
       "_article": "/regard-et-visage/maquillage-waterproof-plage/",
