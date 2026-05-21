@@ -14,13 +14,14 @@
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-20",
+    "derniere_maj": "2026-05-21",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-05-21 → fideliser-clientele-prothesiste (Salon & Pro · Saint-Louis)",
     "2026-05-20 → huiles-seches-chaleur (Corps & Parfum · La Possession)",
     "2026-05-19 → maquillage-waterproof-plage (Regard & Visage · Saint-Leu)",
     "2026-05-18 → french-manucure-reunion (Mains & Ongles · Le Port)",
@@ -31,9 +32,28 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 9 articles publiés"
+    "Total : 10 articles publiés"
   ],
   "articles": {
+    "fideliser-clientele-prothesiste": {
+      "_publie_le": "2026-05-21",
+      "_article": "/salon-et-pro/fideliser-clientele-prothesiste/",
+      "_rubrique": "Salon & Pro",
+      "_ville": "Saint-Louis",
+      "_titre": "Fidéliser sa clientèle quand on est prothésiste à La Réunion",
+      "collections-all": {
+        "nom": "Tout le catalogue BGlam",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      },
+      "table-marbre-or": {
+        "nom": "Table manucure luxe marbre & or",
+        "prix": "199 à 369 €",
+        "url": "https://bglam-re.com/fr/products/modern-luxury-desk-with-marble-top-and-gold-legs-pink",
+        "statut": "🔄 to-check"
+      }
+    },
     "huiles-seches-chaleur": {
       "_publie_le": "2026-05-20",
       "_article": "/corps-et-parfum/huiles-seches-chaleur/",
