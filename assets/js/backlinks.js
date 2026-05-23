@@ -41,6 +41,9 @@
         link.setAttribute('href', productData.url);
         updatedCount++;
       }
+      // Ouvrir dans un nouvel onglet
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener');
     });
 
     if (updatedCount > 0) {
@@ -53,6 +56,12 @@
     if (!articleSlug) return;
     const backlinks = await loadBacklinks();
     if (backlinks) updateLinks(backlinks, articleSlug);
+
+    // Ouvrir tous les liens BGlam dans un nouvel onglet
+    document.querySelectorAll('a[href*="bglam-re.com"]').forEach(link => {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener');
+    });
   });
 
 })();
