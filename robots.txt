@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Dossiers techniques à ne pas indexer
+Disallow: /_scripts/
+Disallow: /data/
+Disallow: /assets/js/
+
+# Sitemap
+Sitemap: https://rituel-beaute.online/sitemap.xml

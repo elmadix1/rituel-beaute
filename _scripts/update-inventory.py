@@ -1,0 +1,570 @@
+#!/usr/bin/env python3
+"""
+============================================================
+UPDATE-INVENTORY.PY · Rituel Beauté (v2)
+------------------------------------------------------------
+Scanne tous les articles HTML et :
+  1. Régénère data/produits-cites.json (inventaire chronologique)
+  2. Met à jour data/backlinks.json :
+     - Trie les articles par date décroissante
+     - Régénère le sommaire chronologique en haut
+
+USAGE :
+    python3 _scripts/update-inventory.py
+
+S'exécute automatiquement via GitHub Actions à chaque push.
+============================================================
+"""
+
+import os
+import re
+import json
+from datetime import datetime
+from pathlib import Path
+from collections import OrderedDict
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+INVENTORY_FILE = REPO_ROOT / "data" / "produits-cites.json"
+BACKLINKS_FILE = REPO_ROOT / "data" / "backlinks.json"
+ARTICLES_PATTERN = "**/index.html"
+
+IGNORE_PATHS = [
+    "index.html",
+    "mentions-legales/index.html",
+    "_templates/",
+    "node_modules/",
+]
+
+PRODUCT_COMMENT_PATTERN = re.compile(
+    r'<!--\s*PRODUIT BGLAM\s*:\s*(.+?)\s*\|\s*(.+?)\s*\|\s*réf:\s*(.+?)\s*-->',
+    re.IGNORECASE
+)
+LINK_HREF_PATTERN = re.compile(r'href="(https://bglam-re\.com[^"]+)"', re.IGNORECASE)
+PUBLISHED_DATE_PATTERN = re.compile(
+    r'<meta property="article:published_time" content="([^"]+)"',
+    re.IGNORECASE
+)
+ARTICLE_TITLE_PATTERN = re.compile(
+    r'<h1 class="article-title">(.+?)</h1>',
+    re.DOTALL | re.IGNORECASE
+)
+
+
+def clean_html(text):
+    text = re.sub(r'<[^>]+>', '', text)
+    return re.sub(r'\s+', ' ', text).strip()
+
+
+def should_ignore(filepath):
+    relative = str(filepath.relative_to(REPO_ROOT))
+    for pattern in IGNORE_PATHS:
+        if relative == pattern or relative.startswith(pattern):
+            return True
+    return False
+
+
+def is_article_page(filepath):
+    try:
+        content = filepath.read_text(encoding='utf-8')
+        has_product = bool(PRODUCT_COMMENT_PATTERN.search(content))
+        has_date = bool(PUBLISHED_DATE_PATTERN.search(content))
+        return has_product or has_date
+    except Exception:
+        return False
+
+
+def extract_article_info(filepath, content):
+    relative = filepath.relative_to(REPO_ROOT)
+    article_url = "/" + str(relative.parent) + "/"
+    if article_url == "/./":
+        article_url = "/"
+
+    date_match = PUBLISHED_DATE_PATTERN.search(content)
+    if date_match:
+        date_str = date_match.group(1)
+        article_date = date_str.split('T')[0]
+    else:
+        mtime = filepath.stat().st_mtime
+        article_date = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d')
+
+    title_match = ARTICLE_TITLE_PATTERN.search(content)
+    if title_match:
+        article_title = clean_html(title_match.group(1))
+    else:
+        article_title = filepath.parent.name.replace('-', ' ').title()
+
+    article_slug = filepath.parent.name
+
+    return article_url, article_date, article_title, article_slug
+
+
+def extract_products(content):
+    products = []
+    for match in PRODUCT_COMMENT_PATTERN.finditer(content):
+        nom = match.group(1).strip()
+        prix = match.group(2).strip()
+        ref = match.group(3).strip()
+
+        after_comment = content[match.end():match.end() + 2000]
+        link_match = LINK_HREF_PATTERN.search(after_comment)
+        url = link_match.group(1) if link_match else None
+
+        if url and "/search?" in url:
+            statut = "⚠️ search"
+        elif url:
+            statut = "✅ verified"
+        else:
+            statut = "❌ no-url-found"
+
+        products.append({
+            "ref": ref,
+            "nom": nom,
+            "prix": prix,
+            "url": url,
+            "statut": statut
+        })
+    return products
+
+
+def scan_articles():
+    """Scanne tous les articles et retourne (produits flat, articles dict)."""
+    all_products = []
+    articles_data = {}
+
+    html_files = list(REPO_ROOT.glob(ARTICLES_PATTERN))
+
+    for filepath in html_files:
+        if should_ignore(filepath):
+            continue
+        if not is_article_page(filepath):
+            continue
+
+        try:
+            content = filepath.read_text(encoding='utf-8')
+        except Exception as e:
+            print(f"⚠️  Erreur lecture {filepath}: {e}")
+            continue
+
+        article_url, article_date, article_title, article_slug = extract_article_info(filepath, content)
+        products = extract_products(content)
+
+        for p in products:
+            all_products.append({
+                "date": article_date,
+                "article": article_title,
+                "article_url": article_url,
+                **p
+            })
+
+        articles_data[article_slug] = {
+            "date": article_date,
+            "title": article_title,
+            "url": article_url,
+            "products": products
+        }
+
+        print(f"   📄 {article_title} ({article_date}) : {len(products)} produit(s)")
+
+    return all_products, articles_data
+
+
+def write_inventory(all_products):
+    """Écrit data/produits-cites.json (liste chronologique flat)."""
+    all_products.sort(key=lambda p: p['date'], reverse=True)
+
+    output = {
+        "_README": "Inventaire chronologique des produits BGlam cités dans les articles. Régénéré automatiquement à chaque push via GitHub Actions.",
+        "_total": len(all_products),
+        "_derniere_generation": datetime.now().isoformat(timespec='seconds'),
+        "_legende_statuts": {
+            "✅ verified": "URL produit vérifiée",
+            "⚠️ search": "Lien de recherche catalogue",
+            "❌ no-url-found": "URL non trouvée dans le HTML"
+        },
+        "produits": all_products
+    }
+
+    INVENTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(INVENTORY_FILE, 'w', encoding='utf-8') as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✅ {INVENTORY_FILE.name} : {len(all_products)} produits")
+
+
+def update_backlinks_sommaire(articles_data):
+    """Met à jour data/backlinks.json :
+       - Régénère le _sommaire_chronologique
+       - Trie les articles par date décroissante
+       (sans toucher aux URLs et statuts manuels)"""
+
+    if not BACKLINKS_FILE.exists():
+        print(f"⚠️  {BACKLINKS_FILE.name} n'existe pas, on ne fait rien.")
+        return
+
+    with open(BACKLINKS_FILE, 'r', encoding='utf-8') as f:
+        backlinks = json.load(f)
+
+    sorted_slugs = sorted(
+        articles_data.keys(),
+        key=lambda s: articles_data[s]['date'],
+        reverse=True
+    )
+
+    sommaire = ["📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN", ""]
+    for slug in sorted_slugs:
+        a = articles_data[slug]
+        existing = backlinks.get("articles", {}).get(slug, {})
+        rubrique = existing.get("_rubrique", "?")
+        ville = existing.get("_ville", "?")
+        sommaire.append(f"{a['date']} → {slug} ({rubrique} · {ville})")
+    sommaire.append("")
+    sommaire.append(f"Total : {len(sorted_slugs)} articles publiés")
+
+    backlinks["_sommaire_chronologique"] = sommaire
+
+    if "_meta" not in backlinks:
+        backlinks["_meta"] = {}
+    backlinks["_meta"]["derniere_maj"] = datetime.now().strftime('%Y-%m-%d')
+
+    if "articles" in backlinks:
+        old_articles = backlinks["articles"]
+        new_articles = OrderedDict()
+
+        for slug in sorted_slugs:
+            if slug in old_articles:
+                old_articles[slug]["_publie_le"] = articles_data[slug]['date']
+                new_articles[slug] = old_articles[slug]
+
+        for slug, data in old_articles.items():
+            if slug not in new_articles:
+                new_articles[slug] = data
+
+        backlinks["articles"] = new_articles
+
+    with open(BACKLINKS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(backlinks, f, ensure_ascii=False, indent=2)
+
+    print(f"\n✅ {BACKLINKS_FILE.name} : sommaire et tri mis à jour")
+    print(f"   Articles triés par date : {len(sorted_slugs)}")
+
+
+def sync_rubrique_pages(articles_data):
+    """Synchronise les pages de rubrique avec les infos des articles.
+    Pour chaque article, trouve la page rubrique parente et met à jour
+    la ville et la date dans la carte article."""
+
+    # Pattern pour trouver la ville dans un article : "Saint-Paul · 974" ou "Le Tampon · 974"
+    VILLE_PATTERN = re.compile(
+        r'<span>((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+)\s*·\s*974)</span>',
+        re.IGNORECASE
+    )
+
+    # Pattern pour trouver la ville dans la carte de la page rubrique
+    # C'est le dernier <span> dans article-card-meta
+    CARD_META_PATTERN = re.compile(
+        r'(<div class="article-card-meta">.*?<span>)((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+)(?:\s*·\s*974)?)(</span>\s*</div>)',
+        re.DOTALL | re.IGNORECASE
+    )
+
+    synced = 0
+
+    for slug, data in articles_data.items():
+        article_url = data['url']  # ex: /mains-et-ongles/semi-permanent-climat-tropical/
+
+        # Trouver la rubrique parente
+        parts = article_url.strip('/').split('/')
+        if len(parts) < 2:
+            continue
+        rubrique = parts[0]  # ex: mains-et-ongles
+
+        # Lire l'article pour trouver la ville
+        article_path = REPO_ROOT / article_url.strip('/') / "index.html"
+        if not article_path.exists():
+            continue
+
+        article_content = article_path.read_text(encoding='utf-8')
+        ville_match = VILLE_PATTERN.search(article_content)
+        if not ville_match:
+            continue
+
+        article_ville = ville_match.group(1)  # ex: "Saint-Paul · 974"
+        # Extraire juste le nom de ville sans "· 974"
+        ville_name = article_ville.split('·')[0].strip()
+
+        # Lire la page rubrique
+        rubrique_path = REPO_ROOT / rubrique / "index.html"
+        if not rubrique_path.exists():
+            continue
+
+        rubrique_content = rubrique_path.read_text(encoding='utf-8')
+
+        # Chercher et remplacer la ville dans la carte article
+        # On cherche le dernier <span> dans chaque article-card-meta
+        # qui contient un nom de ville
+        modified = False
+
+        # Approche simple : remplacer toutes les occurrences de villes
+        # connues dans les card-meta par la bonne ville
+        villes_connues = [
+            'Saint-Denis', 'Saint-Paul', 'Saint-Pierre', 'Saint-André',
+            'Le Tampon', 'La Possession', 'Le Port', 'Sainte-Marie',
+            'Sainte-Suzanne', 'Saint-Louis', 'Saint-Benoît', 'Saint-Gilles',
+            'Cilaos', 'Saint-Leu', 'Saint-Joseph'
+        ]
+
+        for v in villes_connues:
+            if v == ville_name:
+                continue
+            # Remplacer dans les spans du card-meta
+            old_span = f'<span>{v}</span>'
+            new_span = f'<span>{ville_name}</span>'
+            if old_span in rubrique_content:
+                rubrique_content = rubrique_content.replace(old_span, new_span)
+                modified = True
+
+        if modified:
+            with open(rubrique_path, 'w', encoding='utf-8') as f:
+                f.write(rubrique_content)
+            synced += 1
+            print(f"   🔄 {rubrique}/index.html → ville synchronisée : {ville_name}")
+
+    if synced > 0:
+        print(f"\n✅ {synced} page(s) de rubrique synchronisée(s)")
+    else:
+        print(f"\n✅ Pages de rubrique déjà à jour")
+
+
+def update_homepage(articles_data):
+    """Met à jour la section des derniers articles sur la homepage.
+    Remplace tout le contenu entre <!-- ARTICLES-AUTO-START --> et <!-- ARTICLES-AUTO-END -->."""
+
+    homepage_path = REPO_ROOT / "index.html"
+    if not homepage_path.exists():
+        print("⚠️  index.html n'existe pas")
+        return
+
+    content = homepage_path.read_text(encoding='utf-8')
+
+    # Vérifier que les balises existent
+    if '<!-- ARTICLES-AUTO-START -->' not in content:
+        print("⚠️  Balises ARTICLES-AUTO manquantes dans index.html")
+        return
+
+    # Trier les articles par date décroissante
+    sorted_articles = sorted(articles_data.items(), key=lambda x: x[1]['date'], reverse=True)
+
+    if not sorted_articles:
+        return
+
+    # Rubrique slug mapping
+    RUBRIQUE_LABELS = {
+        'mains-et-ongles': 'Mains &amp; Ongles',
+        'regard-et-visage': 'Regard &amp; Visage',
+        'corps-et-parfum': 'Corps &amp; Parfum',
+        'salon-et-pro': 'Salon &amp; Pro',
+        'art-de-vivre': 'Art de vivre',
+    }
+
+    # Le premier article = hero card
+    hero_slug, hero_data = sorted_articles[0]
+    hero_url = hero_data['url']
+    hero_rubrique_slug = hero_url.strip('/').split('/')[0]
+    hero_rubrique = RUBRIQUE_LABELS.get(hero_rubrique_slug, hero_rubrique_slug)
+    hero_num = str(len(sorted_articles)).zfill(2)
+
+    # Extraire la ville depuis l'article
+    hero_article_path = REPO_ROOT / hero_url.strip('/') / "index.html"
+    hero_ville = ""
+    hero_date_display = hero_data['date']
+    if hero_article_path.exists():
+        hero_content = hero_article_path.read_text(encoding='utf-8')
+        ville_match = re.search(r'<span>((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+|Salazie|Étang-Salé|Trois-Bassins|Entre-Deux|Petite-Île|Bras-Panon|Les Avirons)\s*·\s*974)</span>', hero_content)
+        if ville_match:
+            hero_ville = ville_match.group(1).split('·')[0].strip()
+        # Date lisible
+        date_match = re.search(r'<span>Publié le ([^<]+)</span>', hero_content)
+        if date_match:
+            hero_date_display = date_match.group(1)
+
+    # Extraire le titre avec em
+    hero_title_html = hero_data['title']
+    if hero_article_path.exists():
+        title_match = re.search(r'<h1 class="article-title">(.+?)</h1>', hero_content, re.DOTALL)
+        if title_match:
+            hero_title_html = title_match.group(1).strip()
+
+    # Construire le HTML du hero
+    hero_html = f'''<section class="latest-section">
+  <div class="latest-eyebrow">Derniers articles</div>
+
+  <a href="{hero_url}" class="hero-card">
+    <div class="hero-card-visual">
+      <div class="hero-card-number">{hero_num}</div>
+    </div>
+    <div class="hero-card-body">
+      <div class="hero-card-rubrique">{hero_rubrique}</div>
+      <div class="hero-card-title">{hero_title_html}</div>
+      <div class="hero-card-meta">
+        <span>{hero_date_display}</span>
+        <span>Lecture 7 min</span>'''
+
+    if hero_ville:
+        hero_html += f'''
+        <span>{hero_ville}</span>'''
+
+    hero_html += '''
+      </div>
+      <div class="hero-card-cta">Lire l\'article <span>→</span></div>
+    </div>
+  </a>
+
+  <div class="recent-grid">
+'''
+
+    # Les articles suivants (max 5)
+    for slug, data in sorted_articles[1:6]:
+        url = data['url']
+        rubrique_slug = url.strip('/').split('/')[0]
+        rubrique_label = RUBRIQUE_LABELS.get(rubrique_slug, rubrique_slug)
+
+        # Titre avec em
+        card_title = data['title']
+        article_path = REPO_ROOT / url.strip('/') / "index.html"
+        card_ville = ""
+        if article_path.exists():
+            a_content = article_path.read_text(encoding='utf-8')
+            t_match = re.search(r'<h1 class="article-title">(.+?)</h1>', a_content, re.DOTALL)
+            if t_match:
+                card_title = t_match.group(1).strip()
+            v_match = re.search(r'<span>((?:Saint-[A-Za-zéèê]+|Le Tampon|La Possession|Le Port|Cilaos|Sainte-[A-Za-zéèê]+|Salazie|Étang-Salé|Trois-Bassins|Entre-Deux|Petite-Île|Bras-Panon|Les Avirons)\s*·\s*974)</span>', a_content)
+            if v_match:
+                card_ville = v_match.group(1).split('·')[0].strip()
+
+        # Date en mois/année
+        date_parts = data['date'].split('-')
+        mois_map = {'01':'Janvier','02':'Février','03':'Mars','04':'Avril','05':'Mai','06':'Juin','07':'Juillet','08':'Août','09':'Septembre','10':'Octobre','11':'Novembre','12':'Décembre'}
+        date_display = f"{mois_map.get(date_parts[1], date_parts[1])} {date_parts[0]}"
+
+        hero_html += f'''
+    <a href="{url}" class="recent-card" data-rubrique="{rubrique_slug}">
+      <div class="recent-card-rubrique">{rubrique_label}</div>
+      <div class="recent-card-title">{card_title}</div>
+      <div class="recent-card-meta">
+        <span>{date_display}</span>'''
+
+        if card_ville:
+            hero_html += f'''
+        <span>{card_ville}</span>'''
+
+        hero_html += '''
+      </div>
+    </a>
+'''
+
+    hero_html += '''
+  </div>
+</section>'''
+
+    # Remplacer entre les balises
+    new_content = re.sub(
+        r'<!-- ARTICLES-AUTO-START -->.*?<!-- ARTICLES-AUTO-END -->',
+        f'<!-- ARTICLES-AUTO-START -->\n{hero_html}\n<!-- ARTICLES-AUTO-END -->',
+        content,
+        flags=re.DOTALL
+    )
+
+    if new_content != content:
+        with open(homepage_path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        print(f"\n✅ Homepage mise à jour ({len(sorted_articles)} articles)")
+    else:
+        print(f"\n✅ Homepage déjà à jour")
+
+
+def generate_sitemap(articles_data):
+    """Régénère sitemap.xml avec tous les articles et pages."""
+
+    sitemap_path = REPO_ROOT / "sitemap.xml"
+    today = datetime.now().strftime('%Y-%m-%d')
+
+    sorted_articles = sorted(articles_data.items(), key=lambda x: x[1]['date'], reverse=True)
+
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n\n'
+
+    # Homepage
+    xml += '  <url>\n'
+    xml += '    <loc>https://rituel-beaute.online/</loc>\n'
+    xml += f'    <lastmod>{today}</lastmod>\n'
+    xml += '    <changefreq>daily</changefreq>\n'
+    xml += '    <priority>1.0</priority>\n'
+    xml += '  </url>\n\n'
+
+    # Articles
+    rubriques_seen = set()
+    for slug, data in sorted_articles:
+        url = data['url']
+        xml += '  <url>\n'
+        xml += f'    <loc>https://rituel-beaute.online{url}</loc>\n'
+        xml += f'    <lastmod>{data["date"]}</lastmod>\n'
+        xml += '    <changefreq>monthly</changefreq>\n'
+        xml += '    <priority>0.9</priority>\n'
+        xml += '  </url>\n\n'
+
+        # Collecter les rubriques
+        rubrique = url.strip('/').split('/')[0]
+        rubriques_seen.add(rubrique)
+
+    # Pages de rubrique
+    for rubrique in sorted(rubriques_seen):
+        rubrique_path = REPO_ROOT / rubrique / "index.html"
+        if rubrique_path.exists():
+            xml += '  <url>\n'
+            xml += f'    <loc>https://rituel-beaute.online/{rubrique}/</loc>\n'
+            xml += f'    <lastmod>{today}</lastmod>\n'
+            xml += '    <changefreq>weekly</changefreq>\n'
+            xml += '    <priority>0.8</priority>\n'
+            xml += '  </url>\n\n'
+
+    # Mentions légales
+    xml += '  <url>\n'
+    xml += '    <loc>https://rituel-beaute.online/mentions-legales/</loc>\n'
+    xml += '    <lastmod>2026-04-19</lastmod>\n'
+    xml += '    <changefreq>yearly</changefreq>\n'
+    xml += '    <priority>0.3</priority>\n'
+    xml += '  </url>\n\n'
+
+    xml += '</urlset>\n'
+
+    with open(sitemap_path, 'w', encoding='utf-8') as f:
+        f.write(xml)
+
+    total_urls = len(sorted_articles) + len(rubriques_seen) + 2  # +homepage +mentions
+    print(f"\n✅ sitemap.xml : {total_urls} URLs")
+
+
+def main():
+    print("🔍 Scan des articles...\n")
+
+    all_products, articles_data = scan_articles()
+
+    write_inventory(all_products)
+    update_backlinks_sommaire(articles_data)
+    sync_rubrique_pages(articles_data)
+    update_homepage(articles_data)
+    generate_sitemap(articles_data)
+
+    print("\n📊 Récapitulatif :")
+    print(f"   Articles scannés    : {len(articles_data)}")
+    print(f"   Produits référencés : {len(all_products)}")
+
+    if all_products:
+        print("\n📅 Articles du plus récent au plus ancien :")
+        sorted_articles = sorted(articles_data.items(), key=lambda x: x[1]['date'], reverse=True)
+        for slug, a in sorted_articles[:5]:
+            print(f"   {a['date']} → {a['title'][:60]}")
+
+
+if __name__ == "__main__":
+    main()

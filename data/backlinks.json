@@ -1,0 +1,373 @@
+{
+  "_README": [
+    "============================================================",
+    "FICHIER MASTER DES BACKLINKS BGLAM - Rituel Beauté",
+    "============================================================",
+    "",
+    "ROLE : Permet de corriger les URLs cassées en un seul endroit.",
+    "",
+    "STATUTS :",
+    "  - ✅ verified  : URL vérifiée et produit en stock",
+    "  - ⚠️ search    : lien de recherche",
+    "  - ❌ broken    : URL cassée",
+    "  - 🔄 to-check  : à vérifier"
+  ],
+  "_meta": {
+    "version": "2.0",
+    "derniere_maj": "2026-05-23",
+    "site": "rituel-beaute.online",
+    "boutique": "bglam-re.com"
+  },
+  "_sommaire_chronologique": [
+    "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
+    "",
+    "2026-05-23 → biab-builder-in-a-bottle (Mains & Ongles · Saint-Benoît)",
+    "2026-05-23 → rituel-beaute-mariage-creole (Art de vivre · Saint-Benoît)",
+    "2026-05-22 → sourcils-naturels-reunion (Regard & Visage · Sainte-Suzanne)",
+    "2026-05-21 → fideliser-clientele-prothesiste (Salon & Pro · Saint-Louis)",
+    "2026-05-20 → huiles-seches-chaleur (Corps & Parfum · La Possession)",
+    "2026-05-19 → maquillage-waterproof-plage (Regard & Visage · Saint-Leu)",
+    "2026-05-18 → french-manucure-reunion (Mains & Ongles · Le Port)",
+    "2026-05-17 → polygel-acrygel-reunion (Mains & Ongles · Sainte-Marie)",
+    "2026-04-20 → semi-permanent-climat-tropical (Mains & Ongles · Saint-Paul)",
+    "2026-04-19 → rituel-dimanche-soir (Art de vivre · Saint-Denis)",
+    "2026-04-19 → parfum-climat-tropical (Corps & Parfum · Saint-Pierre)",
+    "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
+    "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
+    "",
+    "Total : 13 articles publiés"
+  ],
+  "articles": {
+    "rituel-beaute-mariage-creole": {
+      "_publie_le": "2026-05-23",
+      "_article": "/art-de-vivre/rituel-beaute-mariage-creole/",
+      "_rubrique": "Art de vivre",
+      "_ville": "Saint-Benoît",
+      "_titre": "Le rituel beauté avant un mariage créole",
+      "bglam-frb16": {
+        "nom": "BGLAM Gel Polish FRB16 French Rubber Base",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb16-french-rubber-base",
+        "statut": "✅ verified"
+      },
+      "alberto-taccini-harmonia": {
+        "nom": "Alberto Taccini Harmonia Women Perfume",
+        "prix": "24,90 €",
+        "url": "https://bglam-re.com/fr/products/alberto-taccini-harmonia-women-perfume",
+        "statut": "✅ verified"
+      },
+      "lime-bglam-180-240": {
+        "nom": "Lime BGLAM professionnelle 180/240",
+        "prix": "à partir de 1,25 €",
+        "url": "https://bglam-re.com/fr/products/bglam-professional-grey-half-moon-nail-file-180-240",
+        "statut": "✅ verified"
+      }
+    },
+    "biab-builder-in-a-bottle": {
+      "_publie_le": "2026-05-23",
+      "_article": "/mains-et-ongles/biab-builder-in-a-bottle/",
+      "_rubrique": "Mains & Ongles",
+      "_ville": "Saint-Benoît",
+      "_titre": "BIAB : Builder In A Bottle, pourquoi tout le monde en parle",
+      "builder-gel-collection": {
+        "nom": "Collection Builder Gel BGlam",
+        "prix": "à partir de 15 €",
+        "url": "https://bglam-re.com/collections/bglam-gel-de-construction",
+        "statut": "✅ verified"
+      },
+      "nail-lamp-search": {
+        "nom": "Lampes UV/LED professionnelles BGlam",
+        "prix": "à partir de 29,90 €",
+        "url": "https://bglam-re.com/fr/collections/uv-led-lamp",
+        "statut": "✅ verified"
+      }
+    },
+    "sourcils-naturels-reunion": {
+      "_publie_le": "2026-05-22",
+      "_article": "/regard-et-visage/sourcils-naturels-reunion/",
+      "_rubrique": "Regard & Visage",
+      "_ville": "Sainte-Suzanne",
+      "_titre": "Sourcils naturels : comment les structurer sans les surtravailler",
+      "tweezers-hrc40": {
+        "nom": "Pinces à épiler professionnelles BGlam",
+        "prix": "à partir de 6,90 €",
+        "url": "https://bglam-re.com/fr/collections/tweezers",
+        "statut": "✅ verified"
+      },
+      "lash-brow-serum": {
+        "nom": "BF Concentrated Lash & Brow Serum 5ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/products/bf-concentrated-lash-brown-serum-with-mascara-brush-5-ml",
+        "statut": "✅ verified"
+      }
+    },
+    "fideliser-clientele-prothesiste": {
+      "_publie_le": "2026-05-21",
+      "_article": "/salon-et-pro/fideliser-clientele-prothesiste/",
+      "_rubrique": "Salon & Pro",
+      "_ville": "Saint-Louis",
+      "_titre": "Fidéliser sa clientèle quand on est prothésiste à La Réunion",
+      "collections-all": {
+        "nom": "Tout le catalogue BGlam",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      },
+      "table-marbre-or": {
+        "nom": "Table manucure luxe marbre & or",
+        "prix": "199 à 369 €",
+        "url": "https://bglam-re.com/fr/products/modern-luxury-desk-with-marble-top-and-gold-legs-pink",
+        "statut": "🔄 to-check"
+      }
+    },
+    "huiles-seches-chaleur": {
+      "_publie_le": "2026-05-20",
+      "_article": "/corps-et-parfum/huiles-seches-chaleur/",
+      "_rubrique": "Corps & Parfum",
+      "_ville": "La Possession",
+      "_titre": "Les huiles sèches qui ne collent pas sous la chaleur",
+      "body-mist-secret-paradise": {
+        "nom": "Pierre Cardin Body Mist Secret Paradise 200ml",
+        "prix": "8,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-body-mist-secret-paradise",
+        "statut": "✅ verified"
+      },
+      "parfum-search": {
+        "nom": "Eaux de cologne et brumes parfumées",
+        "prix": "varié",
+        "url": "https://bglam-re.com/collections/pierre-cardin-body-mist",
+        "statut": "⚠️ search"
+      }
+    },
+    "maquillage-waterproof-plage": {
+      "_publie_le": "2026-05-19",
+      "_article": "/regard-et-visage/maquillage-waterproof-plage/",
+      "_rubrique": "Regard & Visage",
+      "_ville": "Saint-Leu",
+      "_titre": "Maquillage waterproof : ce qui tient vraiment à la plage",
+      "lash-brow-serum": {
+        "nom": "BF Concentrated Lash & Brow Serum 5ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/products/bf-concentrated-lash-brown-serum-with-mascara-brush-5-ml",
+        "statut": "✅ verified"
+      },
+      "makeup-brush-collection": {
+        "nom": "Pinceaux et accessoires maquillage",
+        "prix": "varié",
+        "url": "https://bglam-re.com/collections/makeup-brush",
+        "statut": "✅ verified"
+      }
+    },
+    "french-manucure-reunion": {
+      "_publie_le": "2026-05-18",
+      "_article": "/mains-et-ongles/french-manucure-reunion/",
+      "_rubrique": "Mains & Ongles",
+      "_ville": "Le Port",
+      "_titre": "French manucure créole : la version réunionnaise",
+      "bglam-frb16": {
+        "nom": "BGLAM Gel Polish FRB16 French Rubber Base",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb16-french-rubber-base",
+        "statut": "✅ verified"
+      },
+      "bglam-frb25": {
+        "nom": "BGLAM Gel Polish FRB25 French Rubber Base",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb25-french-rubber-base",
+        "statut": "🔄 to-check"
+      },
+      "rubber-base-clear": {
+        "nom": "BGLAM Rubber Base No Wipe, Clear, 15 ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-rubber-base-15ml",
+        "statut": "✅ verified"
+      }
+    },
+    "polygel-acrygel-reunion": {
+      "_publie_le": "2026-05-17",
+      "_article": "/mains-et-ongles/polygel-acrygel-reunion/",
+      "_rubrique": "Mains & Ongles",
+      "_ville": "Sainte-Marie",
+      "_titre": "Polygel ou acrygel : lequel choisir à La Réunion",
+      "bglam-polygel-30ml": {
+        "nom": "BGLAM Polygel/Acrygel 30ml",
+        "prix": "20 €",
+        "url": "https://bglam-re.com/collections/polygel-acrygel",
+        "statut": "✅ verified"
+      },
+      "slip-solution-cleaner": {
+        "nom": "Cleaner triple action & Slip Solution 60ml",
+        "prix": "5 €",
+        "url": "https://bglam-re.com/fr/products/nail-cleaning-liquid",
+        "statut": "✅ verified"
+      },
+      "polygel-collection": {
+        "nom": "Collection Polygel & Acrygel",
+        "prix": "varié",
+        "url": "https://bglam-re.com/collections/polygel-acrygel",
+        "statut": "✅ verified"
+      },
+      "builder-gel-collection": {
+        "nom": "Collection Builder Gel",
+        "prix": "varié",
+        "url": "https://bglam-re.com/collections/bglam-gel-de-construction",
+        "statut": "✅ verified"
+      }
+    },
+    "semi-permanent-climat-tropical": {
+      "_publie_le": "2026-04-20",
+      "_article": "/mains-et-ongles/semi-permanent-climat-tropical/",
+      "_rubrique": "Mains & Ongles",
+      "_ville": "Saint-Paul",
+      "_titre": "Tenir son semi-permanent sous le climat tropical",
+      "primer-search": {
+        "nom": "Primer acide BGlam",
+        "prix": "à partir de 10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-primer-15ml",
+        "statut": "⚠️ search"
+      },
+      "nail-lamp-search": {
+        "nom": "Lampe UV/LED",
+        "prix": "à partir de 29,90 €",
+        "url": "https://bglam-re.com/fr/collections/uv-led-lamp",
+        "statut": "⚠️ search"
+      },
+      "rubber-base-clear": {
+        "nom": "BGLAM Rubber Base No Wipe, Clear, 15 ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-rubber-base-15ml",
+        "statut": "✅ verified"
+      },
+      "top-coat-search": {
+        "nom": "Top Coat Diamond",
+        "prix": "à partir de 12 €",
+        "url": "https://bglam-re.com/products/bglam-top-coat-diamant-15ml",
+        "statut": "⚠️ search"
+      }
+    },
+    "rituel-dimanche-soir": {
+      "_publie_le": "2026-04-19",
+      "_article": "/art-de-vivre/rituel-dimanche-soir/",
+      "_rubrique": "Art de vivre",
+      "_ville": "Saint-Denis",
+      "_titre": "Le rituel du dimanche soir qui prépare toute la semaine",
+      "lime-bglam-180-240": {
+        "nom": "Lime BGlam professionnelle 180/240",
+        "prix": "à partir de 1,25 €",
+        "url": "https://bglam-re.com/fr/products/bglam-professional-grey-half-moon-nail-file-180-240",
+        "statut": "✅ verified"
+      },
+      "bglam-frb16": {
+        "nom": "BGLAM Gel Polish FRB16 French Rubber Base",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb16-french-rubber-base",
+        "statut": "✅ verified"
+      }
+    },
+    "parfum-climat-tropical": {
+      "_publie_le": "2026-04-19",
+      "_article": "/corps-et-parfum/parfum-climat-tropical/",
+      "_rubrique": "Corps & Parfum",
+      "_ville": "Saint-Pierre",
+      "_titre": "Se parfumer à La Réunion : ce qu'on vous a mal appris",
+      "cologne-lemon": {
+        "nom": "Pierre Cardin Eau de Cologne Lemon 50ml",
+        "prix": "2,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-eau-de-cologne-lemon-50-ml",
+        "statut": "✅ verified"
+      },
+      "after-shave-sport": {
+        "nom": "Pierre Cardin After Shave Cologne Sport 150ml",
+        "prix": "7,90 €",
+        "url": "https://bglam-re.com/products/pierre-cardin-for-men-after-shave-cologne-aqua",
+        "statut": "✅ verified"
+      },
+      "body-mist-secret-paradise": {
+        "nom": "Pierre Cardin Body Mist Secret Paradise 200ml",
+        "prix": "8,90 €",
+        "url": "https://bglam-re.com/fr/products/pierre-cardin-body-mist-secret-paradise",
+        "statut": "✅ verified"
+      },
+      "alberto-taccini-harmonia": {
+        "nom": "Alberto Taccini Harmonia Women Perfume",
+        "prix": "24,90 €",
+        "url": "https://bglam-re.com/fr/products/alberto-taccini-harmonia-women-perfume",
+        "statut": "✅ verified"
+      },
+      "parfum-search": {
+        "nom": "Parfums et eaux de cologne (recherche)",
+        "prix": "varié",
+        "url": "https://bglam-re.com/search?q=perfume",
+        "statut": "⚠️ search"
+      }
+    },
+    "accessoires-cils-maison": {
+      "_publie_le": "2026-04-18",
+      "_article": "/regard-et-visage/accessoires-cils-maison/",
+      "_rubrique": "Regard & Visage",
+      "_ville": "Le Tampon",
+      "_titre": "Les accessoires cils à toujours avoir chez soi",
+      "emeda-lash-shampoo": {
+        "nom": "EMEDA Lash Shampoo 60 ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/emeda-lash-shampoo-60ml",
+        "statut": "🔄 to-check"
+      },
+      "tweezers-hrc40": {
+        "nom": "Pince à épiler professionnelle HRC40",
+        "prix": "3,50 €",
+        "url": "https://bglam-re.com/fr/products/tweezers",
+        "statut": "🔄 to-check"
+      },
+      "silicon-gel-tape": {
+        "nom": "Silicon Gel Tape pour cils",
+        "prix": "3,90 €",
+        "url": "https://bglam-re.com/fr/search?q=silicon+gel+tape&options%5Bprefix%5D=last",
+        "statut": "🔄 to-check"
+      },
+      "cils-search": {
+        "nom": "Accessoires cils (recherche)",
+        "prix": "varié",
+        "url": "https://bglam-re.com/search?q=cils",
+        "statut": "⚠️ search"
+      }
+    },
+    "equiper-salon-onglerie-reunion": {
+      "_publie_le": "2026-04-17",
+      "_article": "/salon-et-pro/equiper-salon-onglerie-reunion/",
+      "_rubrique": "Salon & Pro",
+      "_ville": "Saint-André",
+      "_titre": "Équiper un salon d'onglerie à La Réunion : le budget type",
+      "table-bois-pro": {
+        "nom": "Table manucure professionnelle en bois",
+        "prix": "à partir de 159 €",
+        "url": "https://bglam-re.com/fr/products/professional-manicure-table-set",
+        "statut": "🔄 to-check"
+      },
+      "table-marbre-or": {
+        "nom": "Table manucure luxe marbre & or",
+        "prix": "199 à 369 €",
+        "url": "https://bglam-re.com/fr/products/modern-luxury-desk-with-marble-top-and-gold-legs-pink",
+        "statut": "🔄 to-check"
+      },
+      "sun-x5-plus": {
+        "nom": "SUN X5 Plus UV LED 150W",
+        "prix": "29,90 €",
+        "url": "https://bglam-re.com/fr/products/sun-x5-plus",
+        "statut": "🔄 to-check"
+      },
+      "nail-dust-collector-868": {
+        "nom": "Nail Dust Collector 868-1 80W",
+        "prix": "39,90 €",
+        "url": "https://bglam-re.com/fr/products/nail-dust-collector-868-1-80w-purple-hand-rest-size-59-5-39-60-5-cm",
+        "statut": "🔄 to-check"
+      },
+      "collections-all": {
+        "nom": "Toutes les collections BGlam",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      }
+    }
+  }
+}

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rituel Beauté : Le magazine beauté de La Réunion</title>
+<meta name="description" content="Le magazine beauté de La Réunion. Semi-permanent, cils, manucure, parfums : rituels et gestes adaptés au climat tropical, par et pour les Réunionnaises.">
+<meta property="og:title" content="Rituel Beauté : Magazine beauté de La Réunion">
+<meta property="og:description" content="Semi-permanent, cils, manucure, parfums. Rituels beauté adaptés au climat tropical de La Réunion.">
+<meta property="og:locale" content="fr_RE">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://rituel-beaute.online">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<style>
+/* ============================================================
+   HOMEPAGE · Derniers articles
+   ============================================================ */
+
+.latest-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem var(--gutter) 2rem;
+}
+
+.latest-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.latest-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.8rem;
+  height: 1px;
+  background: var(--coral);
+}
+
+/* ---- HERO CARD (dernier article en grand) ---- */
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--paper);
+  border: 1px solid var(--line-warm);
+  margin-bottom: 3rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: var(--coral);
+  transition: width 0.5s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--coral);
+}
+
+.hero-card:hover::before {
+  width: 100%;
+}
+
+.hero-card-visual {
+  background: linear-gradient(135deg, var(--paper-warm) 0%, #F0DCC8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card-visual::after {
+  content: '';
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  top: -40%;
+  left: -40%;
+  background: radial-gradient(ellipse, rgba(232, 130, 111, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-card-number {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 3rem;
+  color: var(--coral);
+  opacity: 0.35;
+  font-variation-settings: "opsz" 144;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+
+.hero-card-body {
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.hero-card-rubrique {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 600;
+}
+
+.hero-card-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.12;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72;
+}
+
+.hero-card-title em {
+  font-style: italic;
+  color: var(--coral);
+}
+
+.hero-card-excerpt {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.hero-card-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.hero-card-meta span + span::before {
+  content: '·';
+  margin: 0 0.5rem;
+  color: var(--coral);
+}
+
+.hero-card-cta {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--coral);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-card-cta span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hero-card:hover .hero-card-cta span {
+  transform: translateX(6px);
+}
+
+/* ---- GRILLE DES ARTICLES PRÉCÉDENTS ---- */
+
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.recent-card {
+  background: var(--paper);
+  border: 1px solid var(--line-warm);
+  padding: 2rem 1.75rem 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: width 0.4s ease;
+}
+
+.recent-card[data-rubrique="mains-et-ongles"]::before { background: var(--coral); }
+.recent-card[data-rubrique="regard-et-visage"]::before { background: var(--flamboyant); }
+.recent-card[data-rubrique="corps-et-parfum"]::before { background: var(--vetiver); }
+.recent-card[data-rubrique="salon-et-pro"]::before { background: var(--coral-deep, #B84060); }
+.recent-card[data-rubrique="art-de-vivre"]::before { background: var(--vetiver); }
+
+.recent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.recent-card:hover::before {
+  width: 100%;
+}
+
+.recent-card-rubrique {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 600;
+}
+
+.recent-card-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48;
+  flex-grow: 1;
+}
+
+.recent-card-title em {
+  font-style: italic;
+  color: var(--coral);
+}
+
+.recent-card-meta {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.recent-card-meta span + span::before {
+  content: '·';
+  margin: 0 0.4rem;
+  color: var(--coral);
+}
+
+/* ---- RESPONSIVE ---- */
+
+@media (max-width: 900px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+  .hero-card-visual {
+    min-height: 12rem;
+  }
+  .hero-card-number {
+    font-size: 5rem;
+  }
+  .hero-card-body {
+    padding: 2.5rem 2rem;
+  }
+  .recent-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .latest-section {
+    padding: 3rem var(--gutter) 1rem;
+  }
+  .hero-card-body {
+    padding: 2rem 1.5rem;
+  }
+  .hero-card-title {
+    font-size: 1.5rem;
+  }
+  .recent-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .recent-card {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="masthead">
+      <a href="/" class="brand">
+        <span class="brand-rituel">Rituel</span>
+        <span class="brand-beaute">Beauté</span>
+      </a>
+      <div class="tagline">Le magazine beauté de La Réunion</div>
+    </div>
+    <nav class="primary-nav">
+      <a href="/mains-et-ongles/">Mains &amp; Ongles</a>
+      <a href="/regard-et-visage/">Regard &amp; Visage</a>
+      <a href="/corps-et-parfum/">Corps &amp; Parfum</a>
+      <a href="/salon-et-pro/">Salon &amp; Pro</a>
+      <a href="/art-de-vivre/">Art de vivre</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== DERNIERS ARTICLES ========== -->
+<!-- ARTICLES-AUTO-START -->
+<section class="latest-section">
+  <div class="latest-eyebrow">Derniers articles</div>
+  <a href="/mains-et-ongles/biab-builder-in-a-bottle/" class="hero-card">
+    <div class="hero-card-visual"><div class="hero-card-number">Nouveau</div></div>
+    <div class="hero-card-body">
+      <div class="hero-card-rubrique">Mains &amp; Ongles</div>
+      <div class="hero-card-title">BIAB : <em>Builder In A Bottle</em>, pourquoi tout le monde en parle</div>
+      <div class="hero-card-meta"><span>23 mai 2026</span><span>Lecture 6 min</span><span>Saint-Benoît</span></div>
+      <div class="hero-card-cta">Lire l’article <span>→</span></div>
+    </div>
+  </a>
+  <div class="recent-grid">
+    <a href="/art-de-vivre/rituel-beaute-mariage-creole/" class="recent-card" data-rubrique="art-de-vivre"><div class="recent-card-rubrique">Art de vivre</div><div class="recent-card-title">Le rituel beauté avant <em>un mariage créole</em></div><div class="recent-card-meta"><span>Mai 2026</span><span>Saint-Benoît</span></div></a>
+    <a href="/regard-et-visage/sourcils-naturels-reunion/" class="recent-card" data-rubrique="regard-et-visage"><div class="recent-card-rubrique">Regard &amp; Visage</div><div class="recent-card-title">Sourcils naturels : <em>comment les structurer</em> sans les surtravailler</div><div class="recent-card-meta"><span>Mai 2026</span><span>Sainte-Suzanne</span></div></a>
+    <a href="/salon-et-pro/fideliser-clientele-prothesiste/" class="recent-card" data-rubrique="salon-et-pro"><div class="recent-card-rubrique">Salon &amp; Pro</div><div class="recent-card-title">Fidéliser sa clientèle quand on est <em>prothésiste</em> à La Réunion</div><div class="recent-card-meta"><span>Mai 2026</span><span>Saint-Louis</span></div></a>
+    <a href="/corps-et-parfum/huiles-seches-chaleur/" class="recent-card" data-rubrique="corps-et-parfum"><div class="recent-card-rubrique">Corps &amp; Parfum</div><div class="recent-card-title">Les huiles sèches qui <em>ne collent pas</em> sous la chaleur</div><div class="recent-card-meta"><span>Mai 2026</span><span>La Possession</span></div></a>
+    <a href="/regard-et-visage/maquillage-waterproof-plage/" class="recent-card" data-rubrique="regard-et-visage"><div class="recent-card-rubrique">Regard &amp; Visage</div><div class="recent-card-title">Maquillage waterproof : <em>ce qui tient vraiment</em> à la plage</div><div class="recent-card-meta"><span>Mai 2026</span><span>Saint-Leu</span></div></a>
+    <a href="/mains-et-ongles/french-manucure-reunion/" class="recent-card" data-rubrique="mains-et-ongles"><div class="recent-card-rubrique">Mains &amp; Ongles</div><div class="recent-card-title">French manucure créole : <em>la version réunionnaise</em></div><div class="recent-card-meta"><span>Mai 2026</span><span>Le Port</span></div></a>
+    <a href="/mains-et-ongles/polygel-acrygel-reunion/" class="recent-card" data-rubrique="mains-et-ongles"><div class="recent-card-rubrique">Mains &amp; Ongles</div><div class="recent-card-title">Polygel ou acrygel : <em>lequel choisir</em> à La Réunion</div><div class="recent-card-meta"><span>Mai 2026</span><span>Sainte-Marie</span></div></a>
+    <a href="/mains-et-ongles/semi-permanent-climat-tropical/" class="recent-card" data-rubrique="mains-et-ongles"><div class="recent-card-rubrique">Mains &amp; Ongles</div><div class="recent-card-title">Tenir son <em>semi-permanent</em> sous le climat tropical</div><div class="recent-card-meta"><span>Avril 2026</span><span>Saint-Paul</span></div></a>
+    <a href="/art-de-vivre/rituel-dimanche-soir/" class="recent-card" data-rubrique="art-de-vivre"><div class="recent-card-rubrique">Art de vivre</div><div class="recent-card-title">Le rituel du <em>dimanche soir</em> qui prépare toute la semaine</div><div class="recent-card-meta"><span>Avril 2026</span><span>Saint-Denis</span></div></a>
+    <a href="/corps-et-parfum/parfum-climat-tropical/" class="recent-card" data-rubrique="corps-et-parfum"><div class="recent-card-rubrique">Corps &amp; Parfum</div><div class="recent-card-title">Se parfumer à La Réunion : <em>ce qu’on vous a mal appris</em></div><div class="recent-card-meta"><span>Avril 2026</span><span>Saint-Pierre</span></div></a>
+  </div>
+</section>
+<!-- ARTICLES-AUTO-END -->
+
+<!-- ========== LES NICHES ========== -->
+<section class="niches">
+  <div class="section-header">
+    <div class="section-eyebrow">Les univers</div>
+    <h2 class="section-title">Cinq territoires, <em>une sensibilité</em>.</h2>
+    <p class="section-sub">Chaque rubrique explore un aspect de la beauté quotidienne. Parcourez celui qui vous parle, ou laissez-vous guider par les rituels qui traversent l'ensemble.</p>
+  </div>
+
+  <div class="niche-grid">
+    <a href="/mains-et-ongles/" class="niche-card" data-num="01">
+      <div class="niche-num">01</div>
+      <h3>Mains &amp; Ongles</h3>
+      <p>Semi-permanent, polygel, nail art. Les techniques qui tiennent sous le climat tropical, et les gestes précis d'une manucure qui dure.</p>
+      <div class="niche-link">Explorer →</div>
+    </a>
+
+    <a href="/regard-et-visage/" class="niche-card" data-num="02">
+      <div class="niche-num">02</div>
+      <h3>Regard &amp; Visage</h3>
+      <p>Cils, sourcils, maquillage qui tient à la chaleur, soins de la peau adaptés à l'île. Le regard qu'on révèle, le visage qu'on respecte.</p>
+      <div class="niche-link">Explorer →</div>
+    </a>
+
+    <a href="/corps-et-parfum/" class="niche-card" data-num="03">
+      <div class="niche-num">03</div>
+      <h3>Corps &amp; Parfum</h3>
+      <p>Parfums, huiles corps, rituels du bain. Le sillage qu'on laisse entre deux bains de lagon, la peau hydratée même après l'UV tropical.</p>
+      <div class="niche-link">Explorer →</div>
+    </a>
+
+    <a href="/salon-et-pro/" class="niche-card" data-num="04">
+      <div class="niche-num">04</div>
+      <h3>Salon &amp; Pro</h3>
+      <p>Pour les prothésistes, esthéticiennes, professionnelles installées à La Réunion. Techniques, équipement, business. L'expertise qui se partage.</p>
+      <div class="niche-link">Explorer →</div>
+    </a>
+
+    <a href="/art-de-vivre/" class="niche-card niche-card-wide" data-num="05">
+      <div class="niche-num">05</div>
+      <h3>Art de vivre</h3>
+      <p>Dipavali, mariage créole, carnaval, rituels des grand-mères : les moments et les traditions qui font la beauté réunionnaise au-delà des produits.</p>
+      <div class="niche-link">Explorer →</div>
+    </a>
+  </div>
+</section>
+
+<!-- ========== MANIFESTE ========== -->
+<section class="manifesto">
+  <blockquote>
+    La beauté n'est pas un <em>effort</em>.<br>C'est un <em>rituel</em>.
+  </blockquote>
+  <div class="manifesto-attr">· Rituel Beauté</div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-brand-block">
+      <div class="footer-brand">
+        <span class="brand-rituel">Rituel</span>
+        <span class="brand-beaute">Beauté</span>
+      </div>
+      <div class="footer-tagline">Le magazine beauté de La Réunion</div>
+      <p class="footer-description">Rituels, gestes et objets pensés pour le climat tropical et le quotidien créole. Publié depuis Saint-Denis, 974.</p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Les univers</h5>
+      <ul>
+        <li><a href="/mains-et-ongles/">Mains &amp; Ongles</a></li>
+        <li><a href="/regard-et-visage/">Regard &amp; Visage</a></li>
+        <li><a href="/corps-et-parfum/">Corps &amp; Parfum</a></li>
+        <li><a href="/salon-et-pro/">Salon &amp; Pro</a></li>
+        <li><a href="/art-de-vivre/">Art de vivre</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Le magazine</h5>
+      <ul>
+        <li><a href="/mentions-legales/">Mentions légales</a></li>
+        <li><a href="mailto:contact@rituel-beaute.online">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      © 2026 Rituel Beauté
+      <span class="dot">·</span>
+      Tous droits réservés
+    </div>
+    <div class="footer-bottom-right">
+      Édité à La Réunion
+      <span class="footer-island-mark">974</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
