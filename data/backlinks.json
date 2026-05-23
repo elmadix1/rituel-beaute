@@ -22,6 +22,7 @@
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
     "2026-05-23 → biab-builder-in-a-bottle (Mains & Ongles · Saint-Benoît)",
+    "2026-05-23 → rituel-beaute-mariage-creole (Art de vivre · Saint-Benoît)",
     "2026-05-22 → sourcils-naturels-reunion (Regard & Visage · Sainte-Suzanne)",
     "2026-05-21 → fideliser-clientele-prothesiste (Salon & Pro · Saint-Louis)",
     "2026-05-20 → huiles-seches-chaleur (Corps & Parfum · La Possession)",
@@ -34,9 +35,34 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 12 articles publiés"
+    "Total : 13 articles publiés"
   ],
   "articles": {
+    "rituel-beaute-mariage-creole": {
+      "_publie_le": "2026-05-23",
+      "_article": "/art-de-vivre/rituel-beaute-mariage-creole/",
+      "_rubrique": "Art de vivre",
+      "_ville": "Saint-Benoît",
+      "_titre": "Le rituel beauté avant un mariage créole",
+      "bglam-frb16": {
+        "nom": "BGLAM Gel Polish FRB16 French Rubber Base",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-gel-polish-15ml-frb16-french-rubber-base",
+        "statut": "✅ verified"
+      },
+      "alberto-taccini-harmonia": {
+        "nom": "Alberto Taccini Harmonia Women Perfume",
+        "prix": "24,90 €",
+        "url": "https://bglam-re.com/fr/products/alberto-taccini-harmonia-women-perfume",
+        "statut": "✅ verified"
+      },
+      "lime-bglam-180-240": {
+        "nom": "Lime BGLAM professionnelle 180/240",
+        "prix": "à partir de 1,25 €",
+        "url": "https://bglam-re.com/fr/products/bglam-professional-grey-half-moon-nail-file-180-240",
+        "statut": "✅ verified"
+      }
+    },
     "biab-builder-in-a-bottle": {
       "_publie_le": "2026-05-23",
       "_article": "/mains-et-ongles/biab-builder-in-a-bottle/",
@@ -44,9 +70,9 @@
       "_ville": "Saint-Benoît",
       "_titre": "BIAB : Builder In A Bottle, pourquoi tout le monde en parle",
       "builder-gel-collection": {
-        "nom": "Collection BIAB BGlam",
-        "prix": "à partir de 10 €",
-        "url": "https://bglam-re.com/fr/collections/biab-liquid-builder-gel",
+        "nom": "Collection Builder Gel BGlam",
+        "prix": "à partir de 15 €",
+        "url": "https://bglam-re.com/collections/bglam-gel-de-construction",
         "statut": "✅ verified"
       },
       "nail-lamp-search": {
