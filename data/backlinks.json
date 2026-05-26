@@ -7,22 +7,23 @@
     "ROLE : Permet de corriger les URLs cassées en un seul endroit.",
     "",
     "STATUTS :",
-    "  - ✅ verified  : URL vérifiée et produit en stock",
+    "  - ✅ verified  : URL vérifiée",
     "  - ⚠️ search    : lien de recherche",
     "  - ❌ broken    : URL cassée",
     "  - 🔄 to-check  : à vérifier"
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-23",
+    "derniere_maj": "2026-05-24",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
-    "2026-05-23 → biab-builder-in-a-bottle (Mains & Ongles · Saint-Benoît)",
+    "2026-05-24 → nail-art-floral-reunion (Mains & Ongles · Cilaos)",
     "2026-05-23 → rituel-beaute-mariage-creole (Art de vivre · Saint-Benoît)",
+    "2026-05-23 → biab-builder-in-a-bottle (Mains & Ongles · Saint-Benoît)",
     "2026-05-22 → sourcils-naturels-reunion (Regard & Visage · Sainte-Suzanne)",
     "2026-05-21 → fideliser-clientele-prothesiste (Salon & Pro · Saint-Louis)",
     "2026-05-20 → huiles-seches-chaleur (Corps & Parfum · La Possession)",
@@ -35,9 +36,34 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 13 articles publiés"
+    "Total : 14 articles publiés"
   ],
   "articles": {
+    "nail-art-floral-reunion": {
+      "_publie_le": "2026-05-24",
+      "_article": "/mains-et-ongles/nail-art-floral-reunion/",
+      "_rubrique": "Mains & Ongles",
+      "_ville": "Cilaos",
+      "_titre": "Nail art floral : s'inspirer des fleurs de La Réunion",
+      "makeup-brush-collection": {
+        "nom": "Pinceaux et accessoires BGLAM",
+        "prix": "varié",
+        "url": "https://bglam-re.com/collections/makeup-brush",
+        "statut": "✅ verified"
+      },
+      "rubber-base-clear": {
+        "nom": "BGLAM Rubber Base No Wipe Clear 15ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-rubber-base-15ml",
+        "statut": "✅ verified"
+      },
+      "collections-all": {
+        "nom": "Collection complète BGLAM",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      }
+    },
     "rituel-beaute-mariage-creole": {
       "_publie_le": "2026-05-23",
       "_article": "/art-de-vivre/rituel-beaute-mariage-creole/",
