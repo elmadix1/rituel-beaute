@@ -1,26 +1,25 @@
 {
   "_README": [
     "============================================================",
-    "FICHIER MASTER DES BACKLINKS BGLAM - Rituel Beauté",
+    "FICHIER MASTER DES BACKLINKS BGLAM",
     "============================================================",
     "",
-    "ROLE : Permet de corriger les URLs cassées en un seul endroit.",
-    "",
     "STATUTS :",
-    "  - ✅ verified  : URL vérifiée",
-    "  - ⚠️ search    : lien de recherche",
-    "  - ❌ broken    : URL cassée",
-    "  - 🔄 to-check  : à vérifier"
+    "  - ✅ verified",
+    "  - ⚠️ search",
+    "  - ❌ broken",
+    "  - 🔄 to-check"
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-24",
+    "derniere_maj": "2026-05-25",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-05-25 → erreurs-prothesistes-debutantes (Salon & Pro · Petite-Île)",
     "2026-05-24 → nail-art-floral-reunion (Mains & Ongles · Cilaos)",
     "2026-05-23 → rituel-beaute-mariage-creole (Art de vivre · Saint-Benoît)",
     "2026-05-23 → biab-builder-in-a-bottle (Mains & Ongles · Saint-Benoît)",
@@ -36,9 +35,34 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 14 articles publiés"
+    "Total : 15 articles publiés"
   ],
   "articles": {
+    "erreurs-prothesistes-debutantes": {
+      "_publie_le": "2026-05-25",
+      "_article": "/salon-et-pro/erreurs-prothesistes-debutantes/",
+      "_rubrique": "Salon & Pro",
+      "_ville": "Petite-Île",
+      "_titre": "Les 5 erreurs des prothésistes débutantes à La Réunion",
+      "sun-x5-plus": {
+        "nom": "SUN X5 Plus UV LED 150W",
+        "prix": "29,90 €",
+        "url": "https://bglam-re.com/fr/products/sun-x5-plus",
+        "statut": "🔄 to-check"
+      },
+      "nail-dust-collector-868": {
+        "nom": "Nail Dust Collector 868-1 80W",
+        "prix": "39,90 €",
+        "url": "https://bglam-re.com/fr/products/nail-dust-collector-868-1-80w-purple-hand-rest-size-59-5-39-60-5-cm",
+        "statut": "🔄 to-check"
+      },
+      "collections-all": {
+        "nom": "Catalogue complet BGLAM",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      }
+    },
     "nail-art-floral-reunion": {
       "_publie_le": "2026-05-24",
       "_article": "/mains-et-ongles/nail-art-floral-reunion/",
