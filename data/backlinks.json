@@ -12,13 +12,14 @@
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-25",
+    "derniere_maj": "2026-05-26",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-05-26 → extensions-cils-volume-russe (Regard & Visage · Saint-Joseph)",
     "2026-05-25 → erreurs-prothesistes-debutantes (Salon & Pro · Petite-Île)",
     "2026-05-24 → nail-art-floral-reunion (Mains & Ongles · Cilaos)",
     "2026-05-23 → rituel-beaute-mariage-creole (Art de vivre · Saint-Benoît)",
@@ -35,9 +36,28 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 15 articles publiés"
+    "Total : 16 articles publiés"
   ],
   "articles": {
+    "extensions-cils-volume-russe": {
+      "_publie_le": "2026-05-26",
+      "_article": "/regard-et-visage/extensions-cils-volume-russe/",
+      "_rubrique": "Regard & Visage",
+      "_ville": "Saint-Joseph",
+      "_titre": "Extensions de cils volume russe en climat tropical",
+      "emeda-lash-shampoo": {
+        "nom": "EMEDA Lash Shampoo 60ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/emeda-lash-shampoo-60ml",
+        "statut": "🔄 to-check"
+      },
+      "lash-brow-serum": {
+        "nom": "Sérum Concentré Cils & Sourcils BF",
+        "prix": "14,50 €",
+        "url": "https://bglam-re.com/products/bf-concentrated-lash-brown-serum-with-mascara-brush-5-ml",
+        "statut": "✅ verified"
+      }
+    },
     "erreurs-prothesistes-debutantes": {
       "_publie_le": "2026-05-25",
       "_article": "/salon-et-pro/erreurs-prothesistes-debutantes/",
