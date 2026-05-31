@@ -12,13 +12,14 @@
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-26",
+    "derniere_maj": "2026-05-31",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-05-31 → pose-semi-permanent-protocole-bglam (Mains & Ongles · Trois-Bassins)",
     "2026-05-26 → extensions-cils-volume-russe (Regard & Visage · Saint-Joseph)",
     "2026-05-25 → erreurs-prothesistes-debutantes (Salon & Pro · Petite-Île)",
     "2026-05-24 → nail-art-floral-reunion (Mains & Ongles · Cilaos)",
@@ -36,9 +37,64 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 16 articles publiés"
+    "Total : 17 articles publiés"
   ],
   "articles": {
+    "pose-semi-permanent-protocole-bglam": {
+      "_publie_le": "2026-05-31",
+      "_article": "/mains-et-ongles/pose-semi-permanent-protocole-bglam/",
+      "_rubrique": "Mains & Ongles",
+      "_ville": "Trois-Bassins",
+      "_titre": "La pose semi-permanent de A à Z : le protocole BGLAM",
+      "bglam-dehydrator": {
+        "nom": "BGLAM Dehydrator Nail Prep 15ml",
+        "prix": "5,90 €",
+        "url": "https://bglam-re.com/fr/products/dehydrator-nail-prep-15ml",
+        "statut": "✅ verified"
+      },
+      "bglam-primer": {
+        "nom": "BGLAM Primer Nail Prep 15ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-primer-15ml",
+        "statut": "✅ verified"
+      },
+      "bglam-base-coat-thin": {
+        "nom": "BGLAM Base Coat Thin No Wipe 15ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-base-coat-no-wipe-15ml",
+        "statut": "✅ verified"
+      },
+      "bglam-base-coat": {
+        "nom": "BGLAM Base Coat No Wipe 15ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-base-coat-no-wipe-15ml-1",
+        "statut": "✅ verified"
+      },
+      "gel-polish-collection": {
+        "nom": "Collection Gel Polish BGLAM",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/collections/bglam-gel-polish",
+        "statut": "✅ verified"
+      },
+      "bglam-top-coat-diamond": {
+        "nom": "BGLAM Top Coat Diamond Shine No Wipe 15ml",
+        "prix": "12 €",
+        "url": "https://bglam-re.com/fr/products/bglam-top-coat-diamant-15ml",
+        "statut": "✅ verified"
+      },
+      "bglam-ultra-shine": {
+        "nom": "BGLAM Ultra Shine Top Coat No Wipe 15ml",
+        "prix": "12 €",
+        "url": "https://bglam-re.com/fr/products/bglam-ultra-shine-top-coat-15ml",
+        "statut": "✅ verified"
+      },
+      "bglam-top-coat-mat": {
+        "nom": "BGLAM Top Coat Mat No Wipe 15ml",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/products/bglam-top-coat-mat-15ml",
+        "statut": "✅ verified"
+      }
+    },
     "extensions-cils-volume-russe": {
       "_publie_le": "2026-05-26",
       "_article": "/regard-et-visage/extensions-cils-volume-russe/",
