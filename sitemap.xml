@@ -1,100 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://rituel-beaute.online/</loc>
-    <lastmod>2026-05-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Rubriques -->
+  <url>
+    <loc>https://rituel-beaute.online/mains-et-ongles/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/regard-et-visage/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/corps-et-parfum/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/salon-et-pro/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/art-de-vivre/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Mains & Ongles (6 articles) -->
+  <url>
+    <loc>https://rituel-beaute.online/mains-et-ongles/pose-semi-permanent-protocole-bglam/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/mains-et-ongles/nail-art-floral-reunion/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/mains-et-ongles/biab-builder-in-a-bottle/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://rituel-beaute.online/mains-et-ongles/french-manucure-reunion/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://rituel-beaute.online/mains-et-ongles/polygel-acrygel-reunion/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://rituel-beaute.online/mains-et-ongles/semi-permanent-climat-tropical/</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
+  <!-- Regard & Visage (4 articles) -->
   <url>
-    <loc>https://rituel-beaute.online/art-de-vivre/rituel-dimanche-soir/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <loc>https://rituel-beaute.online/regard-et-visage/extensions-cils-volume-russe/</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
-
   <url>
-    <loc>https://rituel-beaute.online/corps-et-parfum/parfum-climat-tropical/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <loc>https://rituel-beaute.online/regard-et-visage/sourcils-naturels-reunion/</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://rituel-beaute.online/regard-et-visage/maquillage-waterproof-plage/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://rituel-beaute.online/regard-et-visage/accessoires-cils-maison/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
+  <!-- Corps & Parfum (2 articles) -->
+  <url>
+    <loc>https://rituel-beaute.online/corps-et-parfum/huiles-seches-chaleur/</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/corps-et-parfum/parfum-climat-tropical/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Salon & Pro (3 articles) -->
+  <url>
+    <loc>https://rituel-beaute.online/salon-et-pro/erreurs-prothesistes-debutantes/</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rituel-beaute.online/salon-et-pro/fideliser-clientele-prothesiste/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://rituel-beaute.online/salon-et-pro/equiper-salon-onglerie-reunion/</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
+  <!-- Art de vivre (2 articles) -->
   <url>
-    <loc>https://rituel-beaute.online/art-de-vivre/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://rituel-beaute.online/art-de-vivre/rituel-beaute-mariage-creole/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-
   <url>
-    <loc>https://rituel-beaute.online/corps-et-parfum/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://rituel-beaute.online/art-de-vivre/rituel-dimanche-soir/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://rituel-beaute.online/mains-et-ongles/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rituel-beaute.online/regard-et-visage/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rituel-beaute.online/salon-et-pro/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
+  <!-- Mentions légales -->
   <url>
     <loc>https://rituel-beaute.online/mentions-legales/</loc>
-    <lastmod>2026-04-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
