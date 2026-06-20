@@ -12,13 +12,14 @@
   ],
   "_meta": {
     "version": "2.0",
-    "derniere_maj": "2026-05-31",
+    "derniere_maj": "2026-06-20",
     "site": "rituel-beaute.online",
     "boutique": "bglam-re.com"
   },
   "_sommaire_chronologique": [
     "📅 ARTICLES DU PLUS RÉCENT AU PLUS ANCIEN",
     "",
+    "2026-06-20 → prix-pose-ongles-reunion (Salon & Pro · Salazie)",
     "2026-05-31 → pose-semi-permanent-protocole-bglam (Mains & Ongles · Trois-Bassins)",
     "2026-05-26 → extensions-cils-volume-russe (Regard & Visage · Saint-Joseph)",
     "2026-05-25 → erreurs-prothesistes-debutantes (Salon & Pro · Petite-Île)",
@@ -37,9 +38,28 @@
     "2026-04-18 → accessoires-cils-maison (Regard & Visage · Le Tampon)",
     "2026-04-17 → equiper-salon-onglerie-reunion (Salon & Pro · Saint-André)",
     "",
-    "Total : 17 articles publiés"
+    "Total : 18 articles publiés"
   ],
   "articles": {
+    "prix-pose-ongles-reunion": {
+      "_publie_le": "2026-06-20",
+      "_article": "/salon-et-pro/prix-pose-ongles-reunion/",
+      "_rubrique": "Salon & Pro",
+      "_ville": "Salazie",
+      "_titre": "Prix pose ongles à La Réunion : ce que ça coûte vraiment",
+      "gel-polish-collection": {
+        "nom": "Collection Gel Polish BGLAM",
+        "prix": "10 €",
+        "url": "https://bglam-re.com/fr/collections/bglam-gel-polish",
+        "statut": "✅ verified"
+      },
+      "collections-all": {
+        "nom": "Catalogue complet BGLAM",
+        "prix": "varié",
+        "url": "https://bglam-re.com/fr/collections/all",
+        "statut": "✅ verified"
+      }
+    },
     "pose-semi-permanent-protocole-bglam": {
       "_publie_le": "2026-05-31",
       "_article": "/mains-et-ongles/pose-semi-permanent-protocole-bglam/",
